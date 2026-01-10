@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warehouse Health & Safety Quiz</title>
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #d9e4ec);
+    margin: 0;
+    padding: 0;
+}
+.quiz-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+.question-box {
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background: #f9fbfd;
+    border-left: 5px solid #3498db;
+}
+.question {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.options label {
+    display: block;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.options input { margin-right: 10px; }
+.options label:hover { background: #eef6ff; }
+.correct { background: #e8f8f0 !important; border-color: #27ae60 !important; color: #27ae60; font-weight: bold; }
+.wrong { background: #fdecea !important; border-color: #e74c3c !important; color: #e74c3c; font-weight: bold; }
+.feedback { margin-top: 10px; font-size: 15px; font-weight: 600; }
+.feedback.correct-text { color: #27ae60; }
+.feedback.wrong-text { color: #e74c3c; }
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 14px 30px;
+    font-size: 18px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover { background: #2980b9; }
+.result { text-align: center; font-size: 22px; margin-top: 30px; font-weight: bold; }
+.pass { color: #27ae60; }
+.fail { color: #e74c3c; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<h1>Warehouse Health & Safety Quiz</h1>
+
+<div id="quiz"></div>
+<button onclick="submitQuiz()">Submit Quiz</button>
+<div id="finalResult" class="result"></div>
+</div>
+
+<script>
+// ===== CONFIG =====
+const userId = 1; // change dynamically based on logged-in user
+const moduleId = "WH_SAFETY"; // change dynamically
+const apiBase = "/api/quiz"; // your Gin API base path
+
+let quizData = [];
+
+// ===== FETCH QUIZ QUESTIONS FROM BACKEND =====
+fetch(`${apiBase}/${moduleId}`)
+.then(res => res.json())
+.then(data => {
+    quizData = data.map(q => ({
+        id: q.ID,
+        q: q.Question,
+        o: [q.OptionA, q.OptionB, q.OptionC, q.OptionD],
+        a: ["A","B","C","D"].indexOf(q.CorrectOption),
+        f: q.Feedback
+    }));
+    renderQuiz();
+});
+
+// ===== RENDER QUIZ =====
+function renderQuiz() {
+    const quizEl = document.getElementById("quiz");
+    quizEl.innerHTML = "";
+
+    quizData.forEach((item, index) => {
+        const box = document.createElement("div");
+        box.className = "question-box";
+        box.innerHTML = `
+            <div class="question">${index+1}. ${item.q}</div>
+            <div class="options">
+                ${item.o.map((opt, i) => `
+                    <label>
+                        <input type="radio" name="q${index}" value="${i}" onclick="checkAnswer(${index}, ${i}, this)">
+                        ${opt}
+                    </label>`).join("")}
+            </div>
+            <div id="feedback${index}" class="feedback"></div>
+        `;
+        quizEl.appendChild(box);
+    });
+}
+
+// ===== CHECK ANSWER =====
+function checkAnswer(qIndex, selected, element){
+    const correct = quizData[qIndex].a;
+    const feedback = document.getElementById(`feedback${qIndex}`);
+    const labels = element.parentElement.parentElement.querySelectorAll("label");
+
+    labels.forEach(l=>l.classList.remove("correct","wrong"));
+
+    if(selected === correct){
+        element.parentElement.classList.add("correct");
+        feedback.className = "feedback correct-text";
+        feedback.innerText = "✔ Correct! " + quizData[qIndex].f;
+    } else {
+        element.parentElement.classList.add("wrong");
+        labels[correct].classList.add("correct");
+        feedback.className = "feedback wrong-text";
+        feedback.innerText = "✖ Wrong. " + quizData[qIndex].f;
+    }
+}
+
+// ===== SUBMIT QUIZ TO BACKEND =====
+function submitQuiz(){
+    let score = 0;
+    let answers = [];
+
+    quizData.forEach((item,index)=>{
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if(selected){
+            const correct = parseInt(selected.value) === item.a;
+            if(correct) score++;
+            answers.push({
+                QuestionID: item.id,
+                Selected: ["A","B","C","D"][selected.value],
+                IsCorrect: correct
+            });
+        }
+    });
+
+    fetch(`${apiBase}/submit`, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            UserID: userId,
+            ModuleID: moduleId,
+            Score: score,
+            Total: quizData.length,
+            Answers: answers
+        })
+    })
+    .then(res => res.json())
+    .then(res => {
+        const percentage = (score/quizData.length)*100;
+        const resultEl = document.getElementById("finalResult");
+        resultEl.innerHTML = `
+            Your Score: ${score}/${quizData.length} <br>
+            Percentage: ${percentage.toFixed(2)}% <br>
+            <span class="${percentage >=70 ? 'pass' : 'fail'}">
+                ${percentage >=70 ? 'PASS 🎉' : 'FAIL ❌'}
+            </span>
+        `;
+    });
+}
+</script>
+</body>
+</html>

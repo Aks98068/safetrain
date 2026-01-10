@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Module - SafeTrain360</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="back-link">
+                <span class="back-arrow">&#8592;</span>
+                Home
+            </a>
+            <div class="logo-small">
+                <svg viewBox="0 0 100 100" width="40" height="40">
+                    <circle cx="50" cy="50" r="45" fill="#2563eb"/>
+                    <text x="50" y="58" text-anchor="middle" fill="white" font-size="24" font-weight="bold">360</text>
+                </svg>
+                <span class="logo-text">SafeTrain360</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <h1 class="page-title">Choose Your Training Module</h1>
+            <p class="page-description">Select a module below to begin your safety training session.</p>
+
+            <div class="module-grid">
+                <a href="/hazard" class="module-card hazard-module" onclick="initModule('hazard')">
+                    <div class="module-icon">
+                        <svg viewBox="0 0 100 100" width="100" height="100">
+                            <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c" stroke-width="3"/>
+                            <text x="50" y="70" text-anchor="middle" fill="white" font-size="40" font-weight="bold">!</text>
+                        </svg>
+                    </div>
+                    <h2 class="module-title">Hazard Perception</h2>
+                    <p class="module-desc">Identify hazards in a warehouse environment. Find dangerous items and situations before they cause accidents.</p>
+                    <div class="module-info">
+                        <span class="info-badge">5 Hazards to Find</span>
+                        <span class="info-badge">Interactive Scene</span>
+                    </div>
+                    <div class="module-btn">
+                        <span>Start Module</span>
+                        <span class="arrow">&#8594;</span>
+                    </div>
+                </a>
+
+                <a href="/handling" class="module-card handling-module" onclick="initModule('handling')">
+                    <div class="module-icon">
+                        <svg viewBox="0 0 100 100" width="100" height="100">
+                            <circle cx="50" cy="20" r="12" fill="#2563eb"/>
+                            <rect x="40" y="35" width="20" height="30" fill="#2563eb" rx="3"/>
+                            <rect x="25" y="40" width="50" height="8" fill="#2563eb" rx="3"/>
+                            <rect x="35" y="65" width="12" height="25" fill="#2563eb" rx="3"/>
+                            <rect x="53" y="65" width="12" height="25" fill="#2563eb" rx="3"/>
+                            <rect x="60" y="75" width="25" height="15" fill="#f59e0b" rx="2"/>
+                        </svg>
+                    </div>
+                    <h2 class="module-title">Manual Handling</h2>
+                    <p class="module-desc">Learn proper lifting techniques. Choose the correct postures to safely handle objects in the workplace.</p>
+                    <div class="module-info">
+                        <span class="info-badge">4 Scenarios</span>
+                        <span class="info-badge">Posture Training</span>
+                    </div>
+                    <div class="module-btn">
+                        <span>Start Module</span>
+                        <span class="arrow">&#8594;</span>
+                    </div>
+                </a>
+
+
+
+
+                  <a href="/scene" class="module-card hazard-module" onclick="initModule('hazard')">
+                    <div class="module-icon">
+                        <svg viewBox="0 0 100 100" width="100" height="100">
+                            <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c" stroke-width="3"/>
+                            <text x="50" y="70" text-anchor="middle" fill="white" font-size="40" font-weight="bold">!</text>
+                        </svg>
+                    </div>
+                    <h2 class="module-title">Hazards in 360 degree envireonment</h2>
+                    <p class="module-desc">Identify hazards in a 360 degree environment. Find dangerous hazards and situations before they cause accidents.</p>
+                    <div class="module-info">
+                        <span class="info-badge">5 Hazards to Find</span>
+                        <span class="info-badge"> 360 degree Interactive Scene</span>
+                    </div>
+                    <div class="module-btn">
+                        <span>Start Module</span>
+                        <span class="arrow">&#8594;</span>
+                    </div>
+                </a>
+
+               
+            </div>
+
+            <div class="progress-section" id="progressSection">
+                <h3>Your Progress</h3>
+                <div class="progress-cards">
+                    <div class="progress-card">
+                        <span class="progress-label">Hazard Perception</span>
+                        <div class="progress-status" id="hazardProgress">Not Started</div>
+                    </div>
+                    <div class="progress-card">
+                        <span class="progress-label">Manual Handling</span>
+                        <div class="progress-status" id="handlingProgress">Not Started</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>SafeTrain360 - CET257 Enterprise Project</p>
+        </footer>
+    </div>
+    <script src="/public/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressDisplay();
+        });
+    </script>
+</body>
+</html>

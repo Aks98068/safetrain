@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Warehouse Safety 360° Hazard Training</title>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.scene-navigation {
+  margin-bottom: 10px;
+}
+
+.viewer-container {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto 20px auto;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+
+.scene {
+  width: 100%;
+  height: 400px;
+  background-image: url('https://images.unsplash.com/photo-1590066641799-8c8cc6b7d1f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'); /* Placeholder */
+  background-size: cover;
+  background-position: center;
+  cursor: grab;
+  position: relative;
+  user-select: none;
+}
+
+.hotspot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 0, 0, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+#feedback {
+  margin-top: 10px;
+  font-size: 1.2em;
+  height: 1.5em;
+}
+</style>
+</head>
+<body>
+<h1>Warehouse Safety 360° Hazard Perception Training</h1>
+<div class="scene-navigation">
+  <button id="prevScene">Previous Scene</button>
+  <button id="nextScene">Next Scene</button>
+</div>
+<div class="viewer-container">
+  <div id="scene" class="scene"></div>
+</div>
+<div id="feedback" class="feedback"></div>
+<script>  const scene = document.getElementById('scene');
+    const feedbackDiv = document.getElementById('feedback');
+    const prevBtn = document.getElementById('prevScene');
+    const nextBtn = document.getElementById('nextScene');
+    
+    let currentSceneIndex = 0;
+    
+    // Warehouse scenes with images and hotspots
+    const scenes = [
+      {
+        // Warehouse aisle with shelves
+        imageUrl: 'https://images.unsplash.com/photo-1608979583074-2b1c8b7e3b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+        hotspots: [
+          { id: 'h1', xPercent: 20, yPercent: 50, isHazard: true, isCorrect: true, label: 'Overhead Crane' },
+          { id: 'h2', xPercent: 80, yPercent: 60, isHazard: false, isCorrect: false, label: 'Safe Path' },
+        ],
+      },
+      {
+        // Loading dock area
+        imageUrl: 'https://images.unsplash.com/photo-1588776814546-5608a1320ebc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+        hotspots: [
+          { id: 'h3', xPercent: 50, yPercent: 30, isHazard: true, isCorrect: true, label: 'Slippery Floor' },
+          { id: 'h4', xPercent: 70, yPercent: 50, isHazard: false, isCorrect: false, label: 'Loading Truck' },
+        ],
+      },
+      {
+        // Storage area with forklifts
+        imageUrl: 'https://images.unsplash.com/photo-1617312739136-4f6d6b7a9f2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+        hotspots: [
+          { id: 'h5', xPercent: 30, yPercent: 70, isHazard: true, isCorrect: true, label: 'Forklift Operating' },
+          { id: 'h6', xPercent: 80, yPercent: 20, isHazard: false, isCorrect: false, label: 'Stored Pallets' },
+        ],
+      },
+      {
+        // Electrical panel
+        imageUrl: 'https://images.unsplash.com/photo-1592438439978-19cf4f4f0a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+        hotspots: [
+          { id: 'h7', xPercent: 50, yPercent: 50, isHazard: true, isCorrect: true, label: 'Open Electrical Panel' },
+        ],
+      },
+      {
+        // Stairs and ladders
+        imageUrl: 'https://images.unsplash.com/photo-1591801578572-4aecd056f3f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80',
+        hotspots: [
+          { id: 'h8', xPercent: 50, yPercent: 80, isHazard: true, isCorrect: true, label: 'Unsecured Ladder' },
+        ],
+      },
+    ];
+    
+    // Load scene function
+    function loadScene(index) {
+      const sceneData = scenes[index];
+      scene.style.backgroundImage = `url('${sceneData.imageUrl}')`;
+      // Remove existing hotspots
+      document.querySelectorAll('.hotspot').forEach(h => h.remove());
+      // Add hotspots
+      sceneData.hotspots.forEach(h => {
+        const el = document.createElement('div');
+        el.className = 'hotspot';
+        el.style.left = h.xPercent + '%';
+        el.style.top = h.yPercent + '%';
+        el.title = h.label;
+        el.dataset.id = h.id;
+        el.onclick = () => handleHotspotClick(h);
+        scene.appendChild(el);
+      });
+    }
+    
+    // Hotspot click handler
+    function handleHotspotClick(h) {
+      if (h.isHazard) {
+        if (h.isCorrect) {
+          feedbackDiv.innerHTML = 'Correct hazard identified!';
+          feedbackDiv.style.color = 'green';
+        } else {
+          feedbackDiv.innerHTML = 'Incorrect hazard. Try again.';
+          feedbackDiv.style.color = 'red';
+        }
+      } else {
+        feedbackDiv.innerHTML = 'This is a safe area.';
+        feedbackDiv.style.color = 'blue';
+      }
+    }
+    
+    // Navigation buttons
+    prevBtn.onclick = () => {
+      currentSceneIndex = (currentSceneIndex - 1 + scenes.length) % scenes.length;
+      loadScene(currentSceneIndex);
+      feedbackDiv.innerHTML = '';
+    };
+    nextBtn.onclick = () => {
+      currentSceneIndex = (currentSceneIndex + 1) % scenes.length;
+      loadScene(currentSceneIndex);
+      feedbackDiv.innerHTML = '';
+    };
+    
+    // Scene rotation
+    let isDragging = false;
+    let startX = 0;
+    let backgroundPosX = 50;
+    
+    scene.style.backgroundPosition = 'center';
+    
+    scene.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX;
+      scene.style.cursor = 'grabbing';
+    });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      scene.style.cursor = 'grab';
+    });
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        const deltaX = e.pageX - startX;
+        backgroundPosX += deltaX * 0.1;
+        scene.style.backgroundPosition = `${backgroundPosX}% center`;
+        startX = e.pageX;
+      }
+    });
+    
+    // Initialize first scene
+    loadScene(currentSceneIndex);</script>
+</body>
+</html>

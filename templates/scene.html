@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SafeTrain360 – Hazard Perception</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+
+<h1>Hazard Perception Training</h1>
+<p>Drag the scene to look around and find hazards</p>
+
+<!-- 360 Viewer -->
+<div id="viewer360">
+  <div id="scene360"></div>
+
+  <!-- Hazard hotspots -->
+  <button class="hotspot" style="top:60%; left:25%;" data-hazard="Spillage on floor">⚠</button>
+  <button class="hotspot" style="top:50%; left:55%;" data-hazard="Blocked emergency exit">⚠</button>
+  <button class="hotspot" style="top:65%; left:75%;" data-hazard="Trailing cable">⚠</button>
+</div>
+
+<!-- Scene switch buttons -->
+<div class="scene-controls">
+  <button onclick="loadScene(0)">Scene 1</button>
+  <button onclick="loadScene(1)">Scene 2</button>
+  <button onclick="loadScene(2)">Scene 3</button>
+</div>
+
+<script src="/public/script.js"></script>
+</body>
+</html>

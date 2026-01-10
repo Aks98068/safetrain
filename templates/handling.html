@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Handling - SafeTrain360</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/module" class="back-link">
+                <span class="back-arrow">&#8592;</span>
+                Back to Modules
+            </a>
+            <div class="logo-small">
+                <svg viewBox="0 0 100 100" width="40" height="40">
+                    <circle cx="50" cy="50" r="45" fill="#2563eb"/>
+                    <text x="50" y="58" text-anchor="middle" fill="white" font-size="24" font-weight="bold">360</text>
+                </svg>
+                <span class="logo-text">SafeTrain360</span>
+            </div>
+        </header>
+
+        <main class="main-content handling-content">
+            <div class="module-header">
+                <h1 class="page-title">Manual Handling Training</h1>
+                <div class="score-display">
+                    <span class="score-label">Score:</span>
+                    <span class="score-value" id="handlingScore">0</span>
+                    <span class="score-total">/ 4</span>
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="handlingProgress">
+                    <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+                </div>
+                <span class="progress-text">Scenario <span id="currentScenario">1</span> of 4</span>
+            </div>
+
+            <div class="scenario-container" id="scenarioContainer">
+                <div class="scenario" id="scenario1" data-scenario="1">
+                    <h2 class="scenario-title">Scenario 1: Lifting a Heavy Box from the Floor</h2>
+                    <p class="scenario-question">Which posture is CORRECT for lifting a heavy box from the floor?</p>
+                    
+                    <div class="posture-options" role="group" aria-label="Posture selection for scenario 1">
+                        <button class="posture-card" data-correct="false" onclick="selectPosture(this, 1)" type="button" aria-label="Bending from waist with straight legs - incorrect posture">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 150 200" width="150" height="200">
+                                    <circle cx="75" cy="30" r="20" fill="#2563eb"/>
+                                    <line x1="75" y1="50" x2="75" y2="100" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="100" x2="60" y2="160" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="100" x2="90" y2="160" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="70" x2="45" y2="130" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="75" y1="70" x2="105" y2="130" stroke="#2563eb" stroke-width="6"/>
+                                    <rect x="35" y="125" width="40" height="30" fill="#f59e0b"/>
+                                    <path d="M70 55 Q75 45, 80 55" stroke="#2563eb" stroke-width="3" fill="none"/>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Bending from waist, straight legs</p>
+                        </button>
+
+                        <button class="posture-card" data-correct="true" onclick="selectPosture(this, 1)" type="button" aria-label="Bending knees with straight back - correct posture">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 150 200" width="150" height="200">
+                                    <circle cx="75" cy="50" r="20" fill="#2563eb"/>
+                                    <line x1="75" y1="70" x2="75" y2="110" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="110" x2="55" y2="145" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="55" y1="145" x2="55" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="110" x2="95" y2="145" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="95" y1="145" x2="95" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="85" x2="55" y2="120" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="75" y1="85" x2="95" y2="120" stroke="#2563eb" stroke-width="6"/>
+                                    <rect x="45" y="115" width="50" height="35" fill="#f59e0b"/>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Bending knees, straight back</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="scenario hidden" id="scenario2" data-scenario="2">
+                    <h2 class="scenario-title">Scenario 2: Carrying a Load</h2>
+                    <p class="scenario-question">Which is the CORRECT way to carry a heavy load?</p>
+                    
+                    <div class="posture-options" role="group" aria-label="Posture selection for scenario 2">
+                        <button class="posture-card" data-correct="true" onclick="selectPosture(this, 2)" type="button" aria-label="Carrying load close to body with arms bent - correct posture">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 150 200" width="150" height="200">
+                                    <circle cx="75" cy="30" r="20" fill="#2563eb"/>
+                                    <line x1="75" y1="50" x2="75" y2="120" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="120" x2="60" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="120" x2="90" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="70" x2="55" y2="95" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="75" y1="70" x2="95" y2="95" stroke="#2563eb" stroke-width="6"/>
+                                    <rect x="50" y="85" width="50" height="40" fill="#f59e0b"/>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Close to body, arms bent</p>
+                        </button>
+
+                        <button class="posture-card" data-correct="false" onclick="selectPosture(this, 2)" type="button" aria-label="Carrying load with arms stretched out - incorrect posture">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 150 200" width="150" height="200">
+                                    <circle cx="75" cy="30" r="20" fill="#2563eb"/>
+                                    <line x1="75" y1="50" x2="75" y2="120" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="120" x2="60" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="120" x2="90" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="75" y1="70" x2="35" y2="80" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="75" y1="70" x2="115" y2="80" stroke="#2563eb" stroke-width="6"/>
+                                    <rect x="10" y="65" width="40" height="35" fill="#f59e0b"/>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Arms stretched out</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="scenario hidden" id="scenario3" data-scenario="3">
+                    <h2 class="scenario-title">Scenario 3: Placing a Box on a Shelf</h2>
+                    <p class="scenario-question">Which technique is CORRECT for placing a box on a high shelf?</p>
+                    
+                    <div class="posture-options" role="group" aria-label="Posture selection for scenario 3">
+                        <button class="posture-card" data-correct="false" onclick="selectPosture(this, 3)" type="button" aria-label="Twisting while lifting overhead - incorrect posture">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 150 200" width="150" height="200">
+                                    <rect x="100" y="20" width="45" height="180" fill="#6b7280"/>
+                                    <circle cx="60" cy="50" r="18" fill="#2563eb"/>
+                                    <line x1="60" y1="68" x2="60" y2="130" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="60" y1="130" x2="45" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="60" y1="130" x2="75" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="60" y1="85" x2="80" y2="40" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="60" y1="85" x2="100" y2="50" stroke="#2563eb" stroke-width="6"/>
+                                    <rect x="75" y="30" width="30" height="25" fill="#f59e0b"/>
+                                    <path d="M55 100 Q60 110, 65 100" stroke="#2563eb" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Twisting while lifting overhead</p>
+                        </button>
+
+                        <button class="posture-card" data-correct="true" onclick="selectPosture(this, 3)" type="button" aria-label="Using step ladder and facing shelf directly - correct posture">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 150 200" width="150" height="200">
+                                    <rect x="100" y="20" width="45" height="180" fill="#6b7280"/>
+                                    <rect x="20" y="90" width="50" height="30" fill="#9ca3af"/>
+                                    <circle cx="60" cy="60" r="18" fill="#2563eb"/>
+                                    <line x1="60" y1="78" x2="60" y2="130" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="60" y1="130" x2="45" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="60" y1="130" x2="75" y2="180" stroke="#2563eb" stroke-width="8"/>
+                                    <line x1="60" y1="95" x2="80" y2="70" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="60" y1="95" x2="100" y2="70" stroke="#2563eb" stroke-width="6"/>
+                                    <rect x="75" y="55" width="30" height="25" fill="#f59e0b"/>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Using step ladder, facing shelf</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="scenario hidden" id="scenario4" data-scenario="4">
+                    <h2 class="scenario-title">Scenario 4: Team Lifting</h2>
+                    <p class="scenario-question">What is the CORRECT approach for lifting a very heavy item?</p>
+                    
+                    <div class="posture-options" role="group" aria-label="Posture selection for scenario 4">
+                        <button class="posture-card" data-correct="true" onclick="selectPosture(this, 4)" type="button" aria-label="Two people lifting together - correct approach">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 200 200" width="200" height="200">
+                                    <circle cx="50" cy="50" r="15" fill="#2563eb"/>
+                                    <line x1="50" y1="65" x2="50" y2="110" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="50" y1="110" x2="40" y2="150" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="50" y1="110" x2="60" y2="150" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="50" y1="80" x2="65" y2="105" stroke="#2563eb" stroke-width="5"/>
+                                    <circle cx="150" cy="50" r="15" fill="#2563eb"/>
+                                    <line x1="150" y1="65" x2="150" y2="110" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="150" y1="110" x2="140" y2="150" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="150" y1="110" x2="160" y2="150" stroke="#2563eb" stroke-width="6"/>
+                                    <line x1="150" y1="80" x2="135" y2="105" stroke="#2563eb" stroke-width="5"/>
+                                    <rect x="55" y="95" width="90" height="40" fill="#f59e0b"/>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Two people lifting together</p>
+                        </button>
+
+                        <button class="posture-card" data-correct="false" onclick="selectPosture(this, 4)" type="button" aria-label="Lifting very heavy item alone - incorrect approach">
+                            <div class="posture-image">
+                                <svg viewBox="0 0 150 200" width="150" height="200">
+                                    <circle cx="75" cy="30" r="18" fill="#2563eb"/>
+                                    <line x1="75" y1="48" x2="75" y2="100" stroke="#2563eb" stroke-width="7"/>
+                                    <line x1="75" y1="100" x2="60" y2="160" stroke="#2563eb" stroke-width="7"/>
+                                    <line x1="75" y1="100" x2="90" y2="160" stroke="#2563eb" stroke-width="7"/>
+                                    <line x1="75" y1="65" x2="45" y2="110" stroke="#2563eb" stroke-width="5"/>
+                                    <line x1="75" y1="65" x2="105" y2="110" stroke="#2563eb" stroke-width="5"/>
+                                    <rect x="30" y="100" width="90" height="50" fill="#f59e0b"/>
+                                    <path d="M70 50 Q75 60, 80 50" stroke="#ef4444" stroke-width="2" fill="none"/>
+                                    <text x="75" y="185" text-anchor="middle" fill="#ef4444" font-size="12">VERY HEAVY</text>
+                                </svg>
+                            </div>
+                            <p class="posture-label">Lifting alone anyway</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-panel handling-feedback" id="handlingFeedback">
+                <div class="feedback-content" id="handlingFeedbackContent">
+                    <p>Select the correct posture for each scenario.</p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="resetHandlingModule()">Reset Module</button>
+                <button class="btn btn-primary hidden" id="nextBtn" onclick="nextScenario()">
+                    Next Scenario
+                    <span class="arrow">&#8594;</span>
+                </button>
+                <button class="btn btn-primary hidden" id="completeHandlingBtn" onclick="completeHandlingModule()">
+                    Complete Module
+                    <span class="arrow">&#8594;</span>
+                </button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>SafeTrain360 - CET257 Enterprise Project</p>
+        </footer>
+    </div>
+    <script src="/public/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initHandlingModule();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Results - SafeTrain360</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-small centered">
+                <svg viewBox="0 0 100 100" width="50" height="50">
+                    <circle cx="50" cy="50" r="45" fill="#2563eb"/>
+                    <text x="50" y="58" text-anchor="middle" fill="white" font-size="24" font-weight="bold">360</text>
+                </svg>
+                <span class="logo-text">SafeTrain360</span>
+            </div>
+        </header>
+
+        <main class="main-content results-content">
+            <div class="results-header">
+                <div class="trophy-icon" id="trophyIcon">
+                    <svg viewBox="0 0 100 120" width="120" height="140">
+                        <ellipse cx="50" cy="110" rx="30" ry="8" fill="#d97706"/>
+                        <rect x="40" y="80" width="20" height="30" fill="#f59e0b"/>
+                        <path d="M20 15 L20 50 Q20 70, 50 75 Q80 70, 80 50 L80 15 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="3"/>
+                        <ellipse cx="50" cy="15" rx="30" ry="8" fill="#fcd34d"/>
+                        <path d="M15 25 Q5 35, 10 50 Q15 60, 25 55" stroke="#f59e0b" stroke-width="4" fill="none"/>
+                        <path d="M85 25 Q95 35, 90 50 Q85 60, 75 55" stroke="#f59e0b" stroke-width="4" fill="none"/>
+                        <text x="50" y="55" text-anchor="middle" fill="#92400e" font-size="24" font-weight="bold">&#9733;</text>
+                    </svg>
+                </div>
+                <h1 class="results-title">Training Complete!</h1>
+                <p class="results-subtitle" id="resultSubtitle">Great job completing your safety training</p>
+            </div>
+
+            <div class="results-cards">
+                <div class="result-card hazard-result">
+                    <div class="result-icon">
+                        <svg viewBox="0 0 60 60" width="50" height="50">
+                            <polygon points="30,5 55,50 5,50" fill="#ef4444"/>
+                            <text x="30" y="42" text-anchor="middle" fill="white" font-size="20" font-weight="bold">!</text>
+                        </svg>
+                    </div>
+                    <h3>Hazard Perception</h3>
+                    <div class="result-score">
+                        <span class="score-number" id="hazardFinalScore">0</span>
+                        <span class="score-max">/ 5</span>
+                    </div>
+                    <div class="result-bar">
+                        <div class="result-bar-fill" id="hazardBar" style="width: 0%"></div>
+                    </div>
+                    <p class="result-feedback" id="hazardFeedback">Complete the hazard module to see your score</p>
+                </div>
+
+                <div class="result-card handling-result">
+                    <div class="result-icon">
+                        <svg viewBox="0 0 60 60" width="50" height="50">
+                            <circle cx="30" cy="12" r="8" fill="#2563eb"/>
+                            <rect x="25" y="22" width="10" height="18" fill="#2563eb" rx="2"/>
+                            <rect x="15" y="25" width="30" height="5" fill="#2563eb" rx="2"/>
+                            <rect x="22" y="40" width="6" height="12" fill="#2563eb" rx="2"/>
+                            <rect x="32" y="40" width="6" height="12" fill="#2563eb" rx="2"/>
+                        </svg>
+                    </div>
+                    <h3>Manual Handling</h3>
+                    <div class="result-score">
+                        <span class="score-number" id="handlingFinalScore">0</span>
+                        <span class="score-max">/ 4</span>
+                    </div>
+                    <div class="result-bar">
+                        <div class="result-bar-fill handling-bar" id="handlingBar" style="width: 0%"></div>
+                    </div>
+                    <p class="result-feedback" id="handlingFeedback">Complete the handling module to see your score</p>
+                </div>
+            </div>
+
+            <div class="total-score-section">
+                <h2>Overall Performance</h2>
+                <div class="total-score-display">
+                    <span class="total-score" id="totalScore">0</span>
+                    <span class="total-max">/ 9</span>
+                </div>
+                <div class="performance-badge" id="performanceBadge">
+                    <span class="badge-text">Training Incomplete</span>
+                </div>
+            </div>
+
+            <div class="safety-tips">
+                <h3>Key Safety Reminders</h3>
+                <ul class="tips-list">
+                    <li>
+                        <span class="tip-icon">&#10003;</span>
+                        Always keep walkways clear of obstacles and spills
+                    </li>
+                    <li>
+                        <span class="tip-icon">&#10003;</span>
+                        Never block emergency exits with boxes or equipment
+                    </li>
+                    <li>
+                        <span class="tip-icon">&#10003;</span>
+                        Bend your knees, not your back, when lifting heavy items
+                    </li>
+                    <li>
+                        <span class="tip-icon">&#10003;</span>
+                        Keep loads close to your body while carrying
+                    </li>
+                    <li>
+                        <span class="tip-icon">&#10003;</span>
+                        Ask for help with heavy or awkward loads
+                    </li>
+                </ul>
+            </div>
+
+            <div class="action-buttons results-actions">
+                <a href="/module" class="btn btn-secondary">
+                    <span class="btn-icon">&#8635;</span>
+                    Retake Training
+                </a>
+                <a href="/" class="btn btn-primary">
+                    <span class="btn-icon">&#8962;</span>
+                    Return Home
+                </a>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>SafeTrain360 - CET257 Enterprise Project</p>
+        </footer>
+    </div>
+    <script src="/public/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayResults();
+        });
+    </script>
+</body>
+</html>

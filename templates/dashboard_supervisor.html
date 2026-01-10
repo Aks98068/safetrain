@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supervisor Dashboard</title>
+<link rel="stylesheet" href="/public/dashboard.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="/public/images/logo.gif" alt="Safetrain360 Logo">
+        </div>
+        <nav>
+            <ul>
+                <li data-content="dashboardSection" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                <li data-content="userSection"><i class="fas fa-users"></i> User Management</li>
+                <li data-content="moduleSection"><i class="fas fa-graduation-cap"></i> Module Management</li>
+                <li data-content="quizSection"><i class="fas fa-question-circle"></i> Quiz Management</li>
+                <li data-content="hazardSection"><i class="fas fa-exclamation-triangle"></i> Hazard Management</li>
+                <li data-content="blogSection"><i class="fas fa-blog"></i> Blog Management</li>
+                <li><i class="fas fa-sign-out-alt"></i> <a href="/logout" class="logout-link">Logout</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+       <!-- DASHBOARD SECTION -->
+<section id="dashboardSection" class="content-section active">
+    <h2>Dashboard Analytics</h2>
+
+    <div class="cards-container" style="gap:15px; margin-bottom: 20px;">
+        <div class="card" style="flex:1; text-align:center; padding:15px;">
+            <h4>Total Users</h4>
+            <p class="stat-number" id="total-users">0</p>
+        </div>
+        <div class="card" style="flex:1; text-align:center; padding:15px;">
+            <h4>Active Supervisors</h4>
+            <p class="stat-number" id="total-supervisors">0</p>
+        </div>
+        <div class="card" style="flex:1; text-align:center; padding:15px;">
+            <h4>Active Trainees</h4>
+            <p class="stat-number" id="total-trainees">0</p>
+        </div>
+        <div class="card" style="flex:1; text-align:center; padding:15px;">
+            <h4>Pending Approvals</h4>
+            <p class="stat-number" id="pending-approvals">0</p>
+        </div>
+    </div>
+    
+    <!-- Charts -->
+    <div class="dashboard-grid" style="gap:20px; margin-bottom: 20px;">
+        <div class="card" style="flex:1; padding:20px;">
+            <h3>User Registration Trend</h3>
+            <canvas id="registrationChart" style="width:100%; height:250px;"></canvas>
+        </div>
+        <div class="card" style="flex:1; padding:20px;">
+            <h3>Quiz Completion Rate</h3>
+            <canvas id="quizChart" style="width:100%; height:250px;"></canvas>
+        </div>
+        <div class="card" style="flex:1; padding:20px;">
+            <h3>User Distribution</h3>
+            <canvas id="userPieChart" style="width:100%; height:250px;"></canvas>
+        </div>
+    </div>
+    
+
+    <!-- Recent User Feedback -->
+    <div class="card">
+        <h3>Recent User Feedback</h3>
+        <ul class="activity-list" id="feedback-list">
+            <li><strong>Mike:</strong> Loved the Fire Safety module!</li>
+            <li><strong>Jane:</strong> Quiz 2 was too challenging.</li>
+            <li><strong>John:</strong> Could use more visual aids in the training.</li>
+            <li><strong>Sara:</strong> Hazard Awareness content is excellent!</li>
+        </ul>
+    </div>
+
+    <!-- Recent Users Table -->
+    <div class="card" style="margin-top:20px;">
+        <h3>Recently Registered Users</h3>
+        <table class="mini-table">
+            <thead>
+                <tr><th>Name</th><th>Email</th><th>Role</th></tr>
+            </thead>
+            <tbody id="recent-users">
+                <tr><td>John Doe</td><td>john@example.com</td><td>Trainee</td></tr>
+                <tr><td>Jane Smith</td><td>jane@example.com</td><td>Supervisor</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="userSection" class="content-section">
+    <h2>User Management</h2>
+    <div class="card">
+        <h3>Add / Edit User</h3>
+        <form id="userForm" action="/api/admin/users" method="post">
+            <input type="text" name="first_name" placeholder="First Name" required />
+            <input type="text" name="last_name" placeholder="Last Name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+      
+            <!-- Role Selection -->
+            <select name="role" required>
+              <option value="" disabled selected>Select Role</option>
+              <option value="admin">Admin</option>
+              <option value="supervisor">Supervisor</option>
+              <option value="trainee">Trainee</option>
+            </select>
+            <button type="submit">Save User</button>
+        </form>
+    </div>
+    <input type="text" id="searchUser" class="search" placeholder="Search by email..." style="margin-bottom: 10px;">
+    <div class="card">
+        <h3>All Users</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>first_name</th> <th>last_name</th><th>email</th><th>role</th><th>active</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+        <!-- MODULE MANAGEMENT -->
+        <section id="moduleSection" class="content-section">
+            <h2>Module Management</h2>
+            <div class="card">
+                <h3>Add / Edit Module</h3>
+                <form id="moduleForm">
+                    <input type="hidden" id="moduleId">
+                    <input type="text" id="moduleTitle" placeholder="Module Title" required>
+                    <textarea id="moduleDescription" placeholder="Module Description" required></textarea>
+                    <button type="submit">Save Module</button>
+                </form>
+            </div>
+            <input type="text" id="searchModule"  class="search" placeholder="Search by title..." style="margin-bottom: 10px;">
+            <div class="card">
+                <h3>All Modules</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Title</th><th>Description</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="moduleTableBody">
+                        <tr><td colspan="4">Loading modules...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- QUIZ MANAGEMENT -->
+        <section id="quizSection" class="content-section">
+            <h2>Quiz Management</h2>
+            <div class="card">
+                <h3>Add / Edit Quiz</h3>
+                <form id="quizForm">
+                    <input type="hidden" id="quizId">
+                    <select id="quizModule" required>
+                        <option value="">Select Module</option>
+                    </select>
+                    <input type="number" id="questionCount" placeholder="Number of Questions" required>
+                    <button type="submit">Save Quiz</button>
+                </form>
+            </div>
+            <input type="text" id="searchQuiz"  class="search" placeholder="Search by module..." style="margin-bottom: 10px;">
+            <div class="card">
+                <h3>All Quizzes</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Module</th><th>Question Count</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="quizTableBody">
+                        <tr><td colspan="4">Loading quizzes...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- HAZARD MANAGEMENT -->
+        <section id="hazardSection" class="content-section">
+            <h2>Hazard Management</h2>
+            <div class="card">
+                <h3>Add / Edit Hazard</h3>
+                <form id="hazardForm">
+                    <input type="hidden" id="hazardId">
+                    <input type="text" id="hazardName" placeholder="Hazard Name" required>
+                    <textarea id="hazardDescription" placeholder="Hazard Description" required></textarea>
+                    <button type="submit">Save Hazard</button>
+                </form>
+            </div>
+            <input type="text" id="searchHazard" class="search" placeholder="Search by name..." style="margin-bottom: 10px;">
+            <div class="card">
+                <h3>All Hazards</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Name</th><th>Description</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="hazardTableBody">
+                        <tr><td colspan="4">Loading hazards...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- BLOG MANAGEMENT -->
+        <section id="blogSection" class="content-section">
+            <h2>Blog Management</h2>
+            <div class="card">
+                <h3>Add / Edit Blog Post</h3>
+                <form id="blogForm">
+                    <input type="hidden" id="blogId">
+                    <input type="text" id="blogTitle" placeholder="Title" required>
+                    <textarea id="blogContent" placeholder="Content" required></textarea>
+                    <input type="text" id="blogAuthor" placeholder="Author" required>
+                    <button type="submit">Save Post</button>
+                </form>
+            </div>
+            <input type="text" id="searchBlog"  class="search" placeholder="Search by title..." style="margin-bottom: 10px;">
+            <div class="card">
+                <h3>All Blog Posts</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID</th><th>Title</th><th>Author</th><th>Date</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody id="blogTableBody">
+                        <tr><td colspan="5">Loading posts...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+// Sidebar navigation functionality
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".sidebar ul li[data-content]");
+    const sections = document.querySelectorAll(".content-section");
+
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            links.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+
+            sections.forEach(sec => sec.classList.remove("active"));
+            const target = document.getElementById(link.getAttribute("data-content"));
+            if(target) target.classList.add("active");
+        });
+    });
+});
+</script>
+
+</body>
+</html>

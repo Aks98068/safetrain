@@ -1,6 +1,10 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type User struct {
 	ID        uint   `gorm:"primaryKey"`
@@ -42,4 +46,14 @@ type QuizAnswer struct {
 	QuestionID uint
 	Selected   string `gorm:"size:1"`
 	IsCorrect  bool
+}
+
+type ContactMessage struct {
+	ID        uint           `gorm:"primaryKey"`
+	Name      string         `gorm:"size:100;not null"`
+	Email     string         `gorm:"size:100;not null"`
+	Message   string         `gorm:"type:text;not null"`
+	CreatedAt time.Time      `gorm:"autoCreateTime"`
+	UpdatedAt time.Time      `gorm:"autoUpdateTime"`
+	DeletedAt gorm.DeletedAt `gorm:"index"`
 }

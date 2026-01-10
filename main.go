@@ -44,6 +44,7 @@ func main() {
 	routes.Routes(r)
 	// quizz
 	routes.RegisterQuizRoutes(r, Db.DB)
+	routes.RegisterContactRoutes(r, Db.DB)
 
 	// Start server
 	if err := r.Run(":8080"); err != nil {

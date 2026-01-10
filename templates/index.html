@@ -642,5 +642,22 @@ background-color:#0067a5 ;
   </div>
 
   <script src="/public/script.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+    
+      if (urlParams.has('success')) {
+        alert("✅ Your message has been sent successfully!");
+        // Remove the query parameter so the alert doesn't show on refresh
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    
+      if (urlParams.has('error')) {
+        alert("❌ Something went wrong. Please try again.");
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    });
+    </script>
+    
 </body>
 </html>

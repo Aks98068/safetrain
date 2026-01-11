@@ -1,41 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Module - SafeTrain360</title>
-    <link rel="stylesheet" href="/public/style.css">
+    <!-- <link rel="stylesheet" href="/public/style.css"> -->
+    <link rel="stylesheet" href="/public/navbar.css">
+    <link rel="stylesheet" href="/public/module.css">
+
 </head>
+
 <body>
     <div class="container">
-        <header class="header">
-            <a href="/" class="back-link">
-                <span class="back-arrow">&#8592;</span>
-                Home
-            </a>
-            <div class="logo-small">
-                <svg viewBox="0 0 100 100" width="40" height="40">
-                    <circle cx="50" cy="50" r="45" fill="#2563eb"/>
-                    <text x="50" y="58" text-anchor="middle" fill="white" font-size="24" font-weight="bold">360</text>
-                </svg>
-                <span class="logo-text">SafeTrain360</span>
+        <!-- Header / Navbar -->
+        <nav>
+            <div class="logo"></div>
+            <img src="/public/images/logo.gif" alt="logo" class="logo-icon" />
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/module">Services</a></li>
+                <li><a href="/#blog">Blog</a></li>
+                <li><a href="/#testimonials">Testimonials</a></li>
+                <li><a href="/#contact">Contact Us</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="/login" class="btn btn-login">Login</a>
             </div>
-        </header>
+        </nav>
 
         <main class="main-content">
-            <h1 class="page-title">Choose Your Training Module</h1>
-            <p class="page-description">Select a module below to begin your safety training session.</p>
+            <section class="training-overview">
+                <h2>Interactive Workplace Safety Training</h2>
+                <p>
+                    Select a training module below to begin an immersive learning experience.
+                    Each module is designed to improve hazard awareness, decision-making,
+                    and compliance with workplace health and safety standards.
+                </p>
+
+                <div class="overview-points">
+                    <div class="overview-item">
+                        <h4>✔ Scenario-Based Learning</h4>
+                        <p>Practice identifying hazards in realistic workplace environments.</p>
+                    </div>
+
+                    <div class="overview-item">
+                        <h4>✔ Skill Assessment</h4>
+                        <p>Complete quizzes and tasks to validate your understanding.</p>
+                    </div>
+
+                    <div class="overview-item">
+                        <h4>✔ Progress Tracking</h4>
+                        <p>Your completion status and scores are recorded automatically.</p>
+                    </div>
+                </div>
+            </section>
 
             <div class="module-grid">
                 <a href="/hazard" class="module-card hazard-module" onclick="initModule('hazard')">
                     <div class="module-icon">
                         <svg viewBox="0 0 100 100" width="100" height="100">
-                            <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c" stroke-width="3"/>
-                            <text x="50" y="70" text-anchor="middle" fill="white" font-size="40" font-weight="bold">!</text>
+                            <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c" stroke-width="3" />
+                            <text x="50" y="70" text-anchor="middle" fill="white" font-size="40"
+                                font-weight="bold">!</text>
                         </svg>
                     </div>
                     <h2 class="module-title">Hazard Perception</h2>
-                    <p class="module-desc">Identify hazards in a warehouse environment. Find dangerous items and situations before they cause accidents.</p>
+                    <p class="module-desc">Identify hazards in a warehouse environment. Find dangerous items and
+                        situations before they cause accidents.</p>
                     <div class="module-info">
                         <span class="info-badge">5 Hazards to Find</span>
                         <span class="info-badge">Interactive Scene</span>
@@ -49,16 +81,17 @@
                 <a href="/handling" class="module-card handling-module" onclick="initModule('handling')">
                     <div class="module-icon">
                         <svg viewBox="0 0 100 100" width="100" height="100">
-                            <circle cx="50" cy="20" r="12" fill="#2563eb"/>
-                            <rect x="40" y="35" width="20" height="30" fill="#2563eb" rx="3"/>
-                            <rect x="25" y="40" width="50" height="8" fill="#2563eb" rx="3"/>
-                            <rect x="35" y="65" width="12" height="25" fill="#2563eb" rx="3"/>
-                            <rect x="53" y="65" width="12" height="25" fill="#2563eb" rx="3"/>
-                            <rect x="60" y="75" width="25" height="15" fill="#f59e0b" rx="2"/>
+                            <circle cx="50" cy="20" r="12" fill="#2563eb" />
+                            <rect x="40" y="35" width="20" height="30" fill="#2563eb" rx="3" />
+                            <rect x="25" y="40" width="50" height="8" fill="#2563eb" rx="3" />
+                            <rect x="35" y="65" width="12" height="25" fill="#2563eb" rx="3" />
+                            <rect x="53" y="65" width="12" height="25" fill="#2563eb" rx="3" />
+                            <rect x="60" y="75" width="25" height="15" fill="#f59e0b" rx="2" />
                         </svg>
                     </div>
                     <h2 class="module-title">Manual Handling</h2>
-                    <p class="module-desc">Learn proper lifting techniques. Choose the correct postures to safely handle objects in the workplace.</p>
+                    <p class="module-desc">Learn proper lifting techniques. Choose the correct postures to safely handle
+                        objects in the workplace.</p>
                     <div class="module-info">
                         <span class="info-badge">4 Scenarios</span>
                         <span class="info-badge">Posture Training</span>
@@ -69,18 +102,44 @@
                     </div>
                 </a>
 
-
-
-
-                  <a href="/scene" class="module-card hazard-module" onclick="initModule('hazard')">
+                <a href="/quizzmodule" class="module-card quiz-module" onclick="initModule('quiz')">
                     <div class="module-icon">
                         <svg viewBox="0 0 100 100" width="100" height="100">
-                            <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c" stroke-width="3"/>
-                            <text x="50" y="70" text-anchor="middle" fill="white" font-size="40" font-weight="bold">!</text>
+                            <rect x="20" y="15" width="60" height="70" fill="#f59e0b" rx="8" />
+                            <line x1="30" y1="35" x2="70" y2="35" stroke="white" stroke-width="4" />
+                            <line x1="30" y1="50" x2="70" y2="50" stroke="white" stroke-width="4" />
+                            <line x1="30" y1="65" x2="50" y2="65" stroke="white" stroke-width="4" />
+                            <circle cx="60" cy="65" r="3" fill="white" />
+                        </svg>
+                    </div>
+                    <h2 class="module-title">Quiz & Assessment</h2>
+                    <p class="module-desc">Test your knowledge after completing training modules. Assess your skills
+                        with interactive quizzes and instant feedback.</p>
+                    <div class="module-info">
+                        <span class="info-badge">Timed Quiz</span>
+                        <span class="info-badge">Instant Feedback</span>
+                    </div>
+                    <div class="module-btn">
+                        <span>Start Module</span>
+                        <span class="arrow">&#8594;</span>
+                    </div>
+                </a>
+
+
+
+
+
+                <a href="/scene" class="module-card hazard-module" onclick="initModule('hazard')">
+                    <div class="module-icon">
+                        <svg viewBox="0 0 100 100" width="100" height="100">
+                            <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c" stroke-width="3" />
+                            <text x="50" y="70" text-anchor="middle" fill="white" font-size="40"
+                                font-weight="bold">!</text>
                         </svg>
                     </div>
                     <h2 class="module-title">Hazards in 360 degree envireonment</h2>
-                    <p class="module-desc">Identify hazards in a 360 degree environment. Find dangerous hazards and situations before they cause accidents.</p>
+                    <p class="module-desc">Identify hazards in a 360 degree environment. Find dangerous hazards and
+                        situations before they cause accidents.</p>
                     <div class="module-info">
                         <span class="info-badge">5 Hazards to Find</span>
                         <span class="info-badge"> 360 degree Interactive Scene</span>
@@ -91,8 +150,36 @@
                     </div>
                 </a>
 
-               
+
             </div>
+
+
+            <section class="how-it-works">
+                <h3>How the Training Works</h3>
+
+                <div class="steps">
+                    <div class="step">
+                        <span>1</span>
+                        <p>Select a training module</p>
+                    </div>
+
+                    <div class="step">
+                        <span>2</span>
+                        <p>Complete the interactive training activity</p>
+                    </div>
+
+                    <div class="step">
+                        <span>3</span>
+                        <p>Finish the assessment on the module page</p>
+                    </div>
+
+                    <div class="step">
+                        <span>4</span>
+                        <p>View your score and progress</p>
+                    </div>
+                </div>
+            </section>
+
 
             <div class="progress-section" id="progressSection">
                 <h3>Your Progress</h3>
@@ -109,15 +196,82 @@
             </div>
         </main>
 
+
+        <!-- Footer -->
         <footer class="footer">
-            <p>SafeTrain360 - CET257 Enterprise Project</p>
+
+            <div class="footer-container">
+
+
+                <!-- About -->
+                <div class="footer-section" id="first-section">
+                    <img src="/public/images/logo.gif" alt="SafeTrain360 Logo" width="120" />
+
+                </div>
+
+                <!-- Training Modules -->
+                <div class="footer-section">
+                    <h4>Training Modules</h4>
+                    <ul>
+                        <li><a href="#">360° Hazard Perception Training</a></li>
+                        <li><a href="#">Manual Handling Safety</a></li>
+                        <li><a href="#">Forklift & Equipment Safety</a></li>
+                        <li><a href="#">Workplace Risk Awareness</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Health & Safety Guidelines</a></li>
+                        <li><a href="#">Employee Training Support</a></li>
+                        <li><a href="#">Frequently Asked Questions</a></li>
+                        <li><a href="#">Compliance & Standards</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>
+                        SafeTrain360 Pvt. Ltd.<br>
+                        Logistics Training Center<br>
+                        Industrial Area, Kathmandu<br>
+                        Nepal
+                    </p>
+                    <p>
+                        Email: <a href="mailto:support@safetrain360.com">support@safetrain360.com</a><br>
+                        Phone: +977-1-5550000
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>
+                    © 2026 SafeTrain360. All Rights Reserved.
+                </p>
+                <p>
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms of Use</a> |
+                    <a href="#">Accessibility</a>
+                </p>
+                <p class="disclaimer">
+                    This training system is intended for educational purposes only and does not replace
+                    site-specific safety procedures, risk assessments, or professional safety advice.
+                </p>
+            </div>
         </footer>
+
     </div>
     <script src="/public/script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateProgressDisplay();
         });
     </script>
 </body>
+
 </html>

@@ -28,13 +28,13 @@ func Init() {
 		os.Getenv("DB_NAME"),
 	)
 
-	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{DisableForeignKeyConstraintWhenMigrating: true})
 	if err != nil {
 		log.Fatal("❌ Failed to connect to database:", err)
 	}
 
 	// migrate
-	if err := database.AutoMigrate(&models.User{}, &models.QuizQuestion{}, &models.QuizAttempt{}, &models.QuizAnswer{}, &models.ContactMessage{}); err != nil {
+	if err := database.AutoMigrate(&models.User{}, &models.QuizQuestion{}, &models.QuizAttempt{}, &models.QuizAnswer{}, &models.ContactMessage{}, &models.Module{}); err != nil {
 		log.Fatal("❌ AutoMigrate failed:", err)
 	}
 

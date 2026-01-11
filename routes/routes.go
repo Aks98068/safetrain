@@ -82,6 +82,11 @@ func Routes(r *gin.Engine) {
 		admin.POST("/users", CreateUser)
 		admin.PUT("/users/:id", UpdateUser)
 		admin.DELETE("/users/:id", DeactivateUser)
+		admin.GET("/modules", GetModules)
+		admin.POST("/modules", CreateModule)
+		admin.PUT("/modules/:id", UpdateModule)
+		admin.DELETE("/modules/:id", DeleteModule)
+
 	}
 
 }

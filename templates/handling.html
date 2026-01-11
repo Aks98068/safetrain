@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manual Handling - SafeTrain360</title>
     <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="/public/navbar.css">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <a href="/module" class="back-link">
-                <span class="back-arrow">&#8592;</span>
-                Back to Modules
-            </a>
-            <div class="logo-small">
-                <svg viewBox="0 0 100 100" width="40" height="40">
-                    <circle cx="50" cy="50" r="45" fill="#2563eb"/>
-                    <text x="50" y="58" text-anchor="middle" fill="white" font-size="24" font-weight="bold">360</text>
-                </svg>
-                <span class="logo-text">SafeTrain360</span>
-            </div>
-        </header>
+     <nav>
+        <div class="logo"></div>
+        <img src="/public/images/logo.gif" alt="logo" class="logo-icon" />
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/module">Services</a></li>
+        <li><a href="/#blog">Blog</a></li>
+        <li><a href="/#testimonials">Testimonials</a></li>
+        <li><a href="/#contact">Contact Us</a></li>
+      </ul>
+      <!-- <div class="nav-buttons">
+        <a href="/login" class="btn btn-login">Login</a>
+    </div> -->
+    </nav>
 
         <main class="main-content handling-content">
             <div class="module-header">
@@ -221,9 +223,74 @@
             </div>
         </main>
 
-        <footer class="footer">
-            <p>SafeTrain360 - CET257 Enterprise Project</p>
-        </footer>
+        <!-- Footer -->
+   <footer class="footer">
+     
+  <div class="footer-container">
+    
+
+    <!-- About -->
+    <div class="footer-section" id="first-section">
+      <img src="/public/images/logo.gif" alt="SafeTrain360 Logo" width="120" />
+     
+    </div>
+
+    <!-- Training Modules -->
+    <div class="footer-section">
+      <h4>Training Modules</h4>
+      <ul>
+        <li><a href="#">360° Hazard Perception Training</a></li>
+        <li><a href="#">Manual Handling Safety</a></li>
+        <li><a href="#">Forklift & Equipment Safety</a></li>
+        <li><a href="#">Workplace Risk Awareness</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-section">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Health & Safety Guidelines</a></li>
+        <li><a href="#">Employee Training Support</a></li>
+        <li><a href="#">Frequently Asked Questions</a></li>
+        <li><a href="#">Compliance & Standards</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p>
+        SafeTrain360 Pvt. Ltd.<br>
+        Logistics Training Center<br>
+        Industrial Area, Kathmandu<br>
+        Nepal
+      </p>
+      <p>
+        Email: <a href="mailto:support@safetrain360.com">support@safetrain360.com</a><br>
+        Phone: +977-1-5550000
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p>
+      © 2026 SafeTrain360. All Rights Reserved.
+    </p>
+    <p>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Accessibility</a>
+    </p>
+    <p class="disclaimer">
+      This training system is intended for educational purposes only and does not replace
+      site-specific safety procedures, risk assessments, or professional safety advice.
+    </p>
+  </div>
+</footer>
+
     </div>
     <script src="/public/script.js"></script>
     <script>

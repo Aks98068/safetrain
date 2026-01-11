@@ -1,415 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SafeTrain360 - Warehouse Safety Training</title>
   <!-- <link rel="stylesheet" href="/public/style.css"> -->
   <link rel="stylesheet" href="/public/navbar.css">
-  <style>/* =============================
+  <style>
+    /* =============================
    General Styles
 ============================= */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f3f4f6;
-    color: #1f2937;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    line-height: 1.6;
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      line-height: 1.6;
+    }
 
-/* Make container full-width */
-.container {
-    width: 100%;
-    min-width: 100%;
-    background: #fef3c7;
-    margin: 0 0;
-}
+    /* Make container full-width */
+    .container {
+      width: 100%;
+      min-width: 100%;
+      background: #fef3c7;
+      margin: 0 0;
+    }
 
-/* =============================
+    /* =============================
    Hero Section
 ============================= */
-.hero-section {
-    text-align: center;
-    padding: 100px 20px 80px 20px;
-    background: linear-gradient(135deg, #dbeafe, #fef3c7);
-    border-radius: 0; /* full-width, no border-radius */
-    box-shadow: 0 15px 25px rgba(0,0,0,0.05);
-    width: 80%;
-    right: 50px;
-    margin: 75px auto;
-    
-  
-}
+    .hero-section {
+      text-align: center;
+      padding: 100px 20px 80px 20px;
+      background: linear-gradient(135deg, #dbeafe, #fef3c7);
+      border-radius: 0;
+      /* full-width, no border-radius */
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.05);
+      width: 80%;
+      right: 50px;
+      margin: 75px auto;
 
-.hero-section .hero-icon {
-    margin-bottom: 20px;
-}
 
-.hero-section .subtitle {
-    font-size: 2.5rem;
-    color: #1e40af;
-    margin-bottom: 20px;
-}
+    }
 
-.hero-section .description {
-    font-size: 1.2rem;
-    color: #374151;
-    max-width: 900px;
-    margin: 0 auto;
-}
+    .hero-section .hero-icon {
+      margin-bottom: 20px;
+    }
 
-/* =============================
+    .hero-section .subtitle {
+      font-size: 2.5rem;
+      color: #1e40af;
+      margin-bottom: 20px;
+    }
+
+    .hero-section .description {
+      font-size: 1.2rem;
+      color: #374151;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* =============================
    Features Section
 ============================= */
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-   padding: 50px 0px;
-     background: #fef3c7;
-}
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      width: 100%;
+      padding: 50px 0px;
+      background: #fef3c7;
+    }
 
-.feature-card {
-    background: #ffffff;
-    padding: 30px 25px;
-    border-radius: 15px;
-    flex: 1 1 260px;
-    max-width: 320px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .feature-card {
+      background: #ffffff;
+      padding: 30px 25px;
+      border-radius: 15px;
+      flex: 1 1 260px;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
 
-.feature-card h3 {
-    color: #1e40af;
-    margin-top: 15px;
-    margin-bottom: 12px;
-    font-size: 1.4rem;
-}
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
 
-.feature-card p {
-    font-size: 1rem;
-    color: #4b5563;
-}
+    .feature-card h3 {
+      color: #1e40af;
+      margin-top: 15px;
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
 
-/* Feature Icons */
-.feature-icon svg {
-    width: 60px;
-    height: 60px;
-    transition: transform 0.4s ease, filter 0.3s ease;
-}
+    .feature-card p {
+      font-size: 1rem;
+      color: #4b5563;
+    }
 
-.feature-card:hover .feature-icon svg {
-    transform: scale(1.3) rotate(8deg);
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
-}
+    /* Feature Icons */
+    .feature-icon svg {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.4s ease, filter 0.3s ease;
+    }
 
-/* Specific Icon Colors */
-.hazard-icon polygon {
-    fill: #ef4444;
-    stroke: #b91c1c;
-}
-.handling-icon rect, .handling-icon circle {
-    fill: #2563eb;
-}
-.quiz-icon rect, .quiz-icon circle {
-    fill: #10b981;
-}
+    .feature-card:hover .feature-icon svg {
+      transform: scale(1.3) rotate(8deg);
+      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+    }
 
-/* Special glow for Quiz card */
-.quiz-card:hover .feature-icon svg {
-    filter: drop-shadow(0 0 15px #10b981);
-}
+    /* Specific Icon Colors */
+    .hazard-icon polygon {
+      fill: #ef4444;
+      stroke: #b91c1c;
+    }
 
-/* =============================
+    .handling-icon rect,
+    .handling-icon circle {
+      fill: #2563eb;
+    }
+
+    .quiz-icon rect,
+    .quiz-icon circle {
+      fill: #10b981;
+    }
+
+    /* Special glow for Quiz card */
+    .quiz-card:hover .feature-icon svg {
+      filter: drop-shadow(0 0 15px #10b981);
+    }
+
+    /* =============================
    Buttons
 ============================= */
-.btn {
-    display: inline-block;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
-.btn-primary {
-    background: #1e40af;
-    color: #ffffff;
-    padding: 14px 30px;
-    font-size: 1.1rem;
-    margin-top: 30px;
-}
+    .btn-primary {
+      background: #1e40af;
+      color: #ffffff;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      margin-top: 30px;
+    }
 
-.btn-primary:hover {
-    background: #2563eb;
-}
+    .btn-primary:hover {
+      background: #2563eb;
+    }
 
-.btn-large {
-    font-size: 1.3rem;
-    padding: 18px 35px;
-}
+    .btn-large {
+      font-size: 1.3rem;
+      padding: 18px 35px;
+    }
 
-.btn-small {
-    font-size: 1rem;
-    padding: 10px 20px;
-    background: #2563eb;
-    color: #ffffff;
-    border-radius: 8px;
-}
+    .btn-small {
+      font-size: 1rem;
+      padding: 10px 20px;
+      background: #2563eb;
+      color: #ffffff;
+      border-radius: 8px;
+    }
 
-.btn-small:hover {
-    background: red;
-}
+    .btn-small:hover {
+      background: red;
+    }
 
-.btn-icon {
-    margin-right: 8px;
-}
+    .btn-icon {
+      margin-right: 8px;
+    }
 
-/* =============================
+    /* =============================
    Blog Section
 ============================= */
-.blog-section {
-   
-    text-align: center;
-    width: 100%;
-   background: #e0f2fe;
-    padding: 50px 0px
-}
+    .blog-section {
 
-.blog-section h2 {
-    color: #1e40af;
-    margin-bottom: 40px;
-}
+      text-align: center;
+      width: 100%;
+      background: #e0f2fe;
+      padding: 50px 0px
+    }
 
-.blog-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    width: 100%;
-}
+    .blog-section h2 {
+      color: #1e40af;
+      margin-bottom: 40px;
+    }
 
-.blog-card {
-    background: #ffffff;
-    padding: 25px 20px;
-    border-radius: 15px;
-    flex: 1 1 280px;
-    max-width: 350px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .blog-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+    }
 
-.blog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
+    .blog-card {
+      background: #ffffff;
+      padding: 25px 10px;
+      margin: 0px 30px;
+      flex: 1 1 200px;
 
-.blog-card p {
-    color: #4b5563;
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-/* =============================
+      img {
+        width: 90%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .blog-card p {
+      color: #4b5563;
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    /* =============================
    Testimonials Section
 ============================= */
-.testimonial-section {
-    background: #e0f2fe;
-    padding: 80px 20px;
-    border-radius: 0;
-    text-align: center;
-    
-}
+    .testimonial-section {
+      background: #e0f2fe;
+      padding: 80px 20px;
+      border-radius: 0;
+      text-align: center;
 
-.testimonial-section h2 {
-    color: #1e40af;
-    margin-bottom: 50px;
-}
+    }
 
-.testimonial-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-}
+    .testimonial-section h2 {
+      color: #1e40af;
+      margin-bottom: 50px;
+    }
 
-.testimonial-card {
-    background: #ffffff;
-    padding: 30px 25px;
-    flex: 1 1 280px;
-    max-width: 350px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      width: 100%;
+    }
 
-.testimonial-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
+    .testimonial-card {
+      background: #ffffff;
+      padding: 30px 25px;
+      flex: 1 1 280px;
+      max-width: 350px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.testimonial-card h4 {
-    color: #1e40af;
-    margin-top: 15px;
-    font-size: 1.05rem;
-}
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
 
-/* =============================
+    .testimonial-card h4 {
+      color: #1e40af;
+      margin-top: 15px;
+      font-size: 1.05rem;
+    }
+
+    /* =============================
    Contact Section
 ============================= */
-.contact-section {
-    
-    text-align: center;
-    background: #fef3c7;
-    padding: 60px 20px;
-    border-radius: 0;
-}
+    .contact-section {
 
-.contact-section h2 {
-    color: #1e40af;
-    margin-bottom: 40px;
-}
+      text-align: center;
+      background: #fef3c7;
+      padding: 60px 20px;
+      border-radius: 0;
+    }
 
-.contact-form {
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
+    .contact-section h2 {
+      color: #1e40af;
+      margin-bottom: 40px;
+    }
 
-.contact-form input,
-.contact-form textarea {
-    padding: 15px 18px;
-    border-radius: 10px;
-    border: 1px solid #d1d5db;
-    font-size: 1.1rem;
-    width: 100%;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #10b981;
-    outline: none;
-    box-shadow: 0 0 10px rgba(16,185,129,0.3);
-}
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px 18px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 1.1rem;
+      width: 100%;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.contact-form button {
-    background: #1e40af;
-    color: #ffffff;
-    padding: 14px 30px;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #10b981;
+      outline: none;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }
 
-.contact-form button:hover {
-    background: #2563eb;
-}
+    .contact-form button {
+      background: #1e40af;
+      color: #ffffff;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-/* =============================
-   Footer
-============================= */
-.footer {
-background-color:#0067a5 ;
-  color: #d1d5db;
-  padding: 50px 0px;
-  font-size: 0.9em;
-  width: 100%;
-  height: auto;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.footer-section {
-  flex: 1 1 250px;
-}
-
-.footer-section h4 {
-  color: #ffffff;
-  margin-bottom: 10px;
-}
-
-.footer-section p,
-.footer-section li {
-  margin: 6px 0;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer a {
-  color: #9ca3af;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.footer-bottom {
-  border-top: 1px solid #374151;
-  margin-top: 30px;
-  padding-top: 15px;
-  text-align: center;
-}
+    .contact-form button:hover {
+      background: #2563eb;
+    }
 
 
-.disclaimer {
-  font-size: 0.8em;
-  color: #9ca3af;
-}
+    .headermodule {
+      text-align: center;
+      color: #1e40af;
 
-/* =============================
+      font-size: 2rem;
+    }
+
+    /* =========================
+   Responsive Tweaks
+========================= */
+
+    @media (max-width: 768px) {
+      .footer {
+        padding: 50px 15px 25px;
+      }
+
+      .footer-section h4 {
+        font-size: 15px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+      }
+    }
+
+
+    /* =============================
    Responsive
 ============================= */
-@media screen and (max-width: 1200px) {
-    .features, .blog-cards, .testimonial-cards {
+    @media screen and (max-width: 1200px) {
+
+      .features,
+      .blog-cards,
+      .testimonial-cards {
         flex-direction: column;
         align-items: center;
-    }
+      }
 
-    .feature-card, .blog-card, .testimonial-card {
+      .feature-card,
+      .blog-card,
+      .testimonial-card {
         max-width: 90%;
-    }
+      }
 
-    .hero-section {
+      .hero-section {
         padding: 60px 20px 50px 20px;
+      }
     }
-}
-
   </style>
 </head>
+
 <body>
   <div class="container">
 
     <!-- Header / Navbar -->
     <nav>
-        <div class="logo"></div>
-        <img src="/public/images/logo.gif" alt="logo" class="logo-icon" />
+      <div class="logo"></div>
+      <img src="/public/images/logo.gif" alt="logo" class="logo-icon" />
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/module">Services</a></li>
@@ -420,34 +411,18 @@ background-color:#0067a5 ;
       <div class="nav-buttons">
         <a href="/login" class="btn btn-login">Login</a>
       </div>
-      <div class="hamburger">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </div>
     </nav>
-
-    <div class="menubar">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/module">Services</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </div>
-
     <!-- Hero Section -->
     <main class="main-content">
       <div class="hero-section">
         <div class="hero-icon">
           <svg viewBox="0 0 120 120" width="150" height="150">
-            <rect x="10" y="40" width="100" height="70" fill="#f59e0b" rx="5"/>
-            <rect x="20" y="50" width="30" height="25" fill="#fbbf24"/>
-            <rect x="60" y="50" width="40" height="25" fill="#fbbf24"/>
-            <rect x="20" y="80" width="80" height="20" fill="#fbbf24"/>
-            <polygon points="60,5 10,40 110,40" fill="#1e40af"/>
-            <rect x="55" y="15" width="10" height="15" fill="#ef4444"/>
+            <rect x="10" y="40" width="100" height="70" fill="#f59e0b" rx="5" />
+            <rect x="20" y="50" width="30" height="25" fill="#fbbf24" />
+            <rect x="60" y="50" width="40" height="25" fill="#fbbf24" />
+            <rect x="20" y="80" width="80" height="20" fill="#fbbf24" />
+            <polygon points="60,5 10,40 110,40" fill="#1e40af" />
+            <rect x="55" y="15" width="10" height="15" fill="#ef4444" />
           </svg>
         </div>
         <h2 class="subtitle">Warehouse Safety Training System</h2>
@@ -458,11 +433,14 @@ background-color:#0067a5 ;
       </div>
 
       <!-- Features Section -->
+      <h2 class="headermodule">modules for Training</h2>
       <div class="features">
+
         <div class="feature-card">
+          <img src="/public/images/warehouse2.png" alt="">
           <div class="feature-icon hazard-icon">
             <svg viewBox="0 0 60 60" width="50" height="50">
-              <polygon points="30,5 55,50 5,50" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+              <polygon points="30,5 55,50 5,50" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
               <text x="30" y="42" text-anchor="middle" fill="white" font-size="24" font-weight="bold">!</text>
             </svg>
           </div>
@@ -470,9 +448,11 @@ background-color:#0067a5 ;
           <p>Identify hazards in a 360 degree environment</p>
         </div>
         <div class="feature-card">
+
           <div class="feature-icon hazard-icon">
+            <img src="/public/images/warehouse1.png" alt="">
             <svg viewBox="0 0 60 60" width="50" height="50">
-              <polygon points="30,5 55,50 5,50" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+              <polygon points="30,5 55,50 5,50" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
               <text x="30" y="42" text-anchor="middle" fill="white" font-size="24" font-weight="bold">!</text>
             </svg>
           </div>
@@ -480,13 +460,14 @@ background-color:#0067a5 ;
           <p>Identify workplace hazards in a warehouse environment</p>
         </div>
         <div class="feature-card">
+          <img src="/public//images/warehouse2.png" alt="">
           <div class="feature-icon handling-icon">
             <svg viewBox="0 0 60 60" width="50" height="50">
-              <circle cx="30" cy="12" r="8" fill="#2563eb"/>
-              <rect x="25" y="22" width="10" height="20" fill="#2563eb" rx="2"/>
-              <rect x="15" y="25" width="30" height="5" fill="#2563eb" rx="2"/>
-              <rect x="22" y="42" width="6" height="15" fill="#2563eb" rx="2"/>
-              <rect x="32" y="42" width="6" height="15" fill="#2563eb" rx="2"/>
+              <circle cx="30" cy="12" r="8" fill="#2563eb" />
+              <rect x="25" y="22" width="10" height="20" fill="#2563eb" rx="2" />
+              <rect x="15" y="25" width="30" height="5" fill="#2563eb" rx="2" />
+              <rect x="22" y="42" width="6" height="15" fill="#2563eb" rx="2" />
+              <rect x="32" y="42" width="6" height="15" fill="#2563eb" rx="2" />
             </svg>
           </div>
           <h3>Manual Handling</h3>
@@ -494,41 +475,45 @@ background-color:#0067a5 ;
         </div>
 
         <div class="feature-card">
-  <div class="feature-icon quiz-icon">
-    <svg viewBox="0 0 60 60" width="50" height="50">
-      <!-- Circle for quiz head -->
-      <circle cx="30" cy="12" r="8" fill="#10b981"/>
-      <!-- Rectangle for paper -->
-      <rect x="18" y="25" width="24" height="30" fill="#10b981" rx="3"/>
-      <!-- Lines for text -->
-      <rect x="22" y="30" width="16" height="3" fill="#ffffff" rx="1"/>
-      <rect x="22" y="36" width="16" height="3" fill="#ffffff" rx="1"/>
-      <rect x="22" y="42" width="16" height="3" fill="#ffffff" rx="1"/>
-      <rect x="22" y="48" width="10" height="3" fill="#ffffff" rx="1"/>
-    </svg>
-  </div>
-  <h3>Quiz & Assessment</h3>
-  <p>Test your knowledge with interactive quizzes and get instant feedback</p>
-  <a href="/quizzmodule">quizzes module</a>
-</div>
+          <img src="/public//images/warehouse3.png" alt="">
+          <div class="feature-icon quiz-icon">
+            <svg viewBox="0 0 60 60" width="50" height="50">
+              <!-- Circle for quiz head -->
+              <circle cx="30" cy="12" r="8" fill="#10b981" />
+              <!-- Rectangle for paper -->
+              <rect x="18" y="25" width="24" height="30" fill="#10b981" rx="3" />
+              <!-- Lines for text -->
+              <rect x="22" y="30" width="16" height="3" fill="#ffffff" rx="1" />
+              <rect x="22" y="36" width="16" height="3" fill="#ffffff" rx="1" />
+              <rect x="22" y="42" width="16" height="3" fill="#ffffff" rx="1" />
+              <rect x="22" y="48" width="10" height="3" fill="#ffffff" rx="1" />
+            </svg>
+          </div>
+          <h3>Quiz & Assessment</h3>
+          <p>Test your knowledge with interactive quizzes and get instant feedback</p>
+          <a href="/quizzmodule">quizzes module</a>
+        </div>
       </div>
-      
+
 
       <!-- Blog Section -->
       <section id="blog" class="blog-section">
         <h2>Our Blog</h2>
         <div class="blog-cards">
           <div class="blog-card">
+            <img src="/public/images/warehouse1.png" alt="">
             <h3>Warehouse Safety Tips</h3>
             <p>Learn best practices for safety in warehouses and industrial environments.</p>
             <a href="#" class="btn btn-small">Read More</a>
           </div>
           <div class="blog-card">
+            <img src="/public/images/warehouse2.png" alt="">
             <h3>Handling Heavy Loads</h3>
             <p>Discover techniques to reduce injuries while lifting and moving objects.</p>
             <a href="#" class="btn btn-small">Read More</a>
           </div>
           <div class="blog-card">
+            <img src="/public/images/warehouse3.png" alt="">
             <h3>Emergency Response</h3>
             <p>Be prepared for emergencies with our step-by-step safety guides.</p>
             <a href="#" class="btn btn-small">Read More</a>
@@ -569,74 +554,72 @@ background-color:#0067a5 ;
     </main>
 
     <!-- Footer -->
-   <footer class="footer">
-  <div class="footer-container">
+    <footer class="footer">
 
-    <!-- About -->
-    <div class="footer-section">
-      <h4>About SafeTrain360</h4>
-      <p>
-        SafeTrain360 is a digital health and safety training platform designed for
-        warehouse and logistics environments. Our interactive modules help employees
-        understand safe manual handling, hazard perception, and equipment operation.
-      </p>
-    </div>
+      <div class="footer-container">
 
-    <!-- Training Modules -->
-    <div class="footer-section">
-      <h4>Training Modules</h4>
-      <ul>
-        <li><a href="#">360° Hazard Perception Training</a></li>
-        <li><a href="#">Manual Handling Safety</a></li>
-        <li><a href="#">Forklift & Equipment Safety</a></li>
-        <li><a href="#">Workplace Risk Awareness</a></li>
-      </ul>
-    </div>
 
-    <!-- Resources -->
-    <div class="footer-section">
-      <h4>Resources</h4>
-      <ul>
-        <li><a href="#">Health & Safety Guidelines</a></li>
-        <li><a href="#">Employee Training Support</a></li>
-        <li><a href="#">Frequently Asked Questions</a></li>
-        <li><a href="#">Compliance & Standards</a></li>
-      </ul>
-    </div>
+        <!-- About -->
+        <div class="footer-section" id="first-section">
+          <img src="/public/images/logo.gif" alt="SafeTrain360 Logo" width="120" />
 
-    <!-- Contact -->
-    <div class="footer-section">
-      <h4>Contact Us</h4>
-      <p>
-        SafeTrain360 Pvt. Ltd.<br>
-        Logistics Training Center<br>
-        Industrial Area, Kathmandu<br>
-        Nepal
-      </p>
-      <p>
-        Email: <a href="mailto:support@safetrain360.com">support@safetrain360.com</a><br>
-        Phone: +977-1-5550000
-      </p>
-    </div>
+        </div>
 
-  </div>
+        <!-- Training Modules -->
+        <div class="footer-section">
+          <h4>Training Modules</h4>
+          <ul>
+            <li><a href="#">360° Hazard Perception Training</a></li>
+            <li><a href="#">Manual Handling Safety</a></li>
+            <li><a href="#">Forklift & Equipment Safety</a></li>
+            <li><a href="#">Workplace Risk Awareness</a></li>
+          </ul>
+        </div>
 
-  <!-- Bottom Bar -->
-  <div class="footer-bottom">
-    <p>
-      © 2026 SafeTrain360. All Rights Reserved.
-    </p>
-    <p>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Use</a> |
-      <a href="#">Accessibility</a>
-    </p>
-    <p class="disclaimer">
-      This training system is intended for educational purposes only and does not replace
-      site-specific safety procedures, risk assessments, or professional safety advice.
-    </p>
-  </div>
-</footer>
+        <!-- Resources -->
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Health & Safety Guidelines</a></li>
+            <li><a href="#">Employee Training Support</a></li>
+            <li><a href="#">Frequently Asked Questions</a></li>
+            <li><a href="#">Compliance & Standards</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <p>
+            SafeTrain360 Pvt. Ltd.<br>
+            Logistics Training Center<br>
+            Industrial Area, Kathmandu<br>
+            Nepal
+          </p>
+          <p>
+            Email: <a href="mailto:support@safetrain360.com">support@safetrain360.com</a><br>
+            Phone: +977-1-5550000
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>
+          © 2026 SafeTrain360. All Rights Reserved.
+        </p>
+        <p>
+          <a href="#">Privacy Policy</a> |
+          <a href="#">Terms of Use</a> |
+          <a href="#">Accessibility</a>
+        </p>
+        <p class="disclaimer">
+          This training system is intended for educational purposes only and does not replace
+          site-specific safety procedures, risk assessments, or professional safety advice.
+        </p>
+      </div>
+    </footer>
 
 
   </div>
@@ -645,19 +628,20 @@ background-color:#0067a5 ;
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
-    
+
       if (urlParams.has('success')) {
         alert("✅ Your message has been sent successfully!");
         // Remove the query parameter so the alert doesn't show on refresh
         window.history.replaceState({}, document.title, window.location.pathname);
       }
-    
+
       if (urlParams.has('error')) {
         alert("❌ Something went wrong. Please try again.");
         window.history.replaceState({}, document.title, window.location.pathname);
       }
     });
-    </script>
-    
+  </script>
+
 </body>
+
 </html>

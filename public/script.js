@@ -450,129 +450,96 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-
-
-const scene360 = document.getElementById("scene360");
-
-/* 360 scenes (real images you downloaded) */
-const scenes = [
-  "/images/warehouse1.png",
-  "/images/warehouse2.png",
-  "/images/warehouse3.png"
-];
-
-let dragging = false;
-let lastX = 0;
-let bgX = 0;
-
-/* Load default scene */
-scene360.style.backgroundImage = `url('${scenes[0]}')`;
-
-/* Change scene */
-function loadScene(index) {
-  bgX = 0;
-  scene360.style.backgroundPositionX = "0px";
-  scene360.style.backgroundImage = `url('${scenes[index]}')`;
-}
-
-/* Mouse drag */
-scene360.addEventListener("mousedown", e => {
-  dragging = true;
-  lastX = e.clientX;
-  scene360.style.cursor = "grabbing";
-});
-
-window.addEventListener("mouseup", () => {
-  dragging = false;
-  scene360.style.cursor = "grab";
-});
-
-window.addEventListener("mousemove", e => {
-  if (!dragging) return;
-  const dx = e.clientX - lastX;
-  lastX = e.clientX;
-  bgX += dx;
-  scene360.style.backgroundPositionX = bgX + "px";
-});
-
-/* Touch support */
-scene360.addEventListener("touchstart", e => {
-  lastX = e.touches[0].clientX;
-});
-
-scene360.addEventListener("touchmove", e => {
-  const dx = e.touches[0].clientX - lastX;
-  lastX = e.touches[0].clientX;
-  bgX += dx;
-  scene360.style.backgroundPositionX = bgX + "px";
-});
-
-/* Hazard interaction */
-document.querySelectorAll(".hotspot").forEach(h => {
-  h.addEventListener("click", () => {
-    alert("Hazard identified: " + h.dataset.hazard);
-
-    let score = Number(sessionStorage.getItem("score")) || 0;
-    sessionStorage.setItem("score", score + 1);
-
-    h.style.display = "none"; // Prevent double scoring
-  });
-});
-
-
-  
-
-
-
-
-
-
-// admin dashboard navigation code 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const sidebarItems = document.querySelectorAll(".sidebar nav ul li[data-content]");
-    const sections = document.querySelectorAll(".content-section");
-    const cardsContainer = document.querySelector(".cards-container");
+  const scene = document.getElementById("scene360");
+  const img = document.getElementById("sceneImage");
 
-    // Hide all sections
-    function hideAllSections() {
-        sections.forEach(section => section.style.display = "none");
-        if (cardsContainer) cardsContainer.style.display = "none";
-    }
+  if (!scene || !img) {
+    console.error("scene360 or sceneImage missing");
+    return;
+  }
 
-    // Remove active class
-    function clearActive() {
-        sidebarItems.forEach(item => item.classList.remove("active"));
-    }
+  const scenes = [
+    "/public/images/warehouse1.png",
+    "/public/images/warehouse2.png",
+    "/public/images/warehouse3.png"
+  ];
 
-    // Default dashboard view
-    hideAllSections();
-    if (cardsContainer) cardsContainer.style.display = "grid";
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
 
-    sidebarItems.forEach(item => {
-        item.addEventListener("click", () => {
+  /* Scene switch (GLOBAL for buttons) */
+  window.loadScene = function (index) {
+    if (!scenes[index]) return;
+    img.src = scenes[index];
+    currentX = 0;
+    img.style.transform = "translateX(0px)";
 
-            const targetId = item.getAttribute("data-content");
-
-            hideAllSections();
-            clearActive();
-            item.classList.add("active");
-
-            if (targetId === "dashboard") {
-                if (cardsContainer) cardsContainer.style.display = "grid";
-            } else {
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.style.display = "block";
-                }
-            }
-        });
+    document.querySelectorAll(".hotspot").forEach(h => {
+      h.style.display = "block";
+      h.dataset.clicked = "false";
     });
+  };
+
+  /* Mouse */
+  scene.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    scene.style.cursor = "grabbing";
+  });
+
+  window.addEventListener("mouseup", () => {
+    isDragging = false;
+    scene.style.cursor = "grab";
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    const dx = e.clientX - startX;
+    startX = e.clientX;
+    currentX += dx;
+
+    img.style.transform = `translateX(${currentX}px)`;
+  });
+
+  /* Touch */
+  scene.addEventListener("touchstart", (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+  });
+
+  scene.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    const dx = e.touches[0].clientX - startX;
+    startX = e.touches[0].clientX;
+    currentX += dx;
+
+    img.style.transform = `translateX(${currentX}px)`;
+  }, { passive: false });
+
+  scene.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+
+  /* Hotspots */
+  document.querySelectorAll(".hotspot").forEach(h => {
+    h.addEventListener("click", () => {
+
+      if (h.dataset.clicked === "true") return;
+
+      alert("Hazard identified: " + h.dataset.hazard);
+
+      let score = Number(sessionStorage.getItem("score")) || 0;
+      sessionStorage.setItem("score", score + 1);
+
+      h.dataset.clicked = "true";
+      h.style.display = "none";
+    });
+  });
 
 });
-//   end of the navigation code 

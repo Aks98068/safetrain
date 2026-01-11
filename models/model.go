@@ -57,3 +57,21 @@ type ContactMessage struct {
 	UpdatedAt time.Time      `gorm:"autoUpdateTime"`
 	DeletedAt gorm.DeletedAt `gorm:"index"`
 }
+
+type Module struct {
+	ID          int       `gorm:"primaryKey;column:id" json:"id"` // INT(11)
+	Title       string    `gorm:"size:100;not null" json:"title"`
+	Description string    `gorm:"type:text" json:"description"`
+	Type        string    `gorm:"size:50" json:"type"`
+	Image       string    `gorm:"size:255" json:"image,omitempty"`
+	VideoURL    string    `gorm:"size:255" json:"video_url,omitempty"`
+	ContentType string    `gorm:"column:content_type;type:varchar(50)" json:"content_type,omitempty"`
+	ContentText string    `gorm:"column:content_text;type:text" json:"content_text,omitempty"`
+	Media       string    `gorm:"column:media;type:varchar(255)" json:"media,omitempty"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+}
+
+func (Module) TableName() string {
+	return "modules" // Assuming one table "modules" with optional content columns
+}

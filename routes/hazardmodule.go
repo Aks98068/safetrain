@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"net/http"
 	"safetrain360/models"
 
 	"github.com/gin-gonic/gin"
@@ -96,4 +97,29 @@ func RegisterAdminHazardRoutes(router *gin.Engine, db *gorm.DB) {
 			c.JSON(200, gin.H{"message": "Hazard module deleted successfully"})
 		})
 	}
+}
+
+func TrainingHazardRoutes(r *gin.RouterGroup, db *gorm.DB) {
+	r.GET("/hazard-module/:id", func(c *gin.Context) {
+		id := c.Param("id")
+
+		var module models.HazardPerceptionModule
+		err := db.Preload("Hazards").First(&module, id).Error
+
+		if err != nil {
+			c.JSON(http.StatusNotFound, gin.H{
+				"error": "Training module not found",
+			})
+			return
+		}
+
+		if len(module.Hazards) == 0 {
+			c.JSON(http.StatusOK, gin.H{
+				"message": "No hazards configured",
+			})
+			return
+		}
+
+		c.JSON(http.StatusOK, module)
+	})
 }

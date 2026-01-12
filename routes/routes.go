@@ -41,14 +41,6 @@ func Routes(r *gin.Engine) {
 		c.HTML(http.StatusOK, "login.html", nil)
 	})
 
-	r.GET("/about", func(c *gin.Context) { c.String(200, "About Page") })
-	r.GET("/hazard", func(c *gin.Context) { c.HTML(http.StatusOK, "hazard.html", nil) })
-	r.GET("/handling", func(c *gin.Context) { c.HTML(http.StatusOK, "handling.html", nil) })
-	r.GET("/result", func(c *gin.Context) { c.HTML(http.StatusOK, "result.html", nil) })
-	r.GET("/module", func(c *gin.Context) { c.HTML(http.StatusOK, "modules.html", nil) })
-	r.GET("/scene", func(c *gin.Context) { c.HTML(http.StatusOK, "scene.html", nil) })
-	r.GET("/quizzmodule", func(c *gin.Context) { c.HTML(http.StatusOK, "quizzmodule.html", nil) })
-
 	// --- Auth API ---
 	auth := r.Group("/api/auth")
 	{
@@ -71,7 +63,23 @@ func Routes(r *gin.Engine) {
 		})
 
 		// Dashboard stats API
+
 		dashboard.GET("/api/stats", DashboardStats)
+	}
+
+	trainee := r.Group("/api/trainee")
+	trainee.Use(AuthMiddleware(), RoleMiddleware("trainee"))
+	{
+		trainee.GET("/module", func(c *gin.Context) {
+			c.HTML(http.StatusOK, "modules.html", gin.H{"title": "Modules"})
+		})
+		trainee.GET("/quizz", func(c *gin.Context) { c.HTML(http.StatusOK, "quizzmodule.html", gin.H{"title": "quizzes"}) })
+		trainee.GET("/hazard", func(c *gin.Context) { c.HTML(http.StatusOK, "hazard.html", gin.H{"title": "hazards"}) })
+		trainee.GET("/360scene", func(c *gin.Context) { c.HTML(http.StatusOK, "360scenemodule.html", gin.H{"title": "360 d scene"}) })
+		trainee.GET("/scene", func(c *gin.Context) { c.HTML(http.StatusOK, "scene.html", gin.H{"title": "warehouse safety "}) })
+		trainee.GET("/forklift", func(c *gin.Context) { c.HTML(http.StatusOK, "hazardmodule.html", gin.H{"title": "forklift"}) })
+		trainee.GET("/handling", func(c *gin.Context) { c.HTML(http.StatusOK, "handling.html", gin.H{"title": "manual handling"}) })
+
 	}
 
 	// --- Admin User Management ---

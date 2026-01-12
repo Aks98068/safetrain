@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainee Dashboard</title>
+    <link rel="stylesheet" href="/public/module.css">
+    <link rel="stylesheet" href="/public/dashboard.css">
+    <link rel="stylesheet" href="/public/trainee.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-section {
+            border-radius: 0px;
+            margin-bottom: 0px;
+        }
+
+        .main-content {
+            padding: 0px 0px;
+            border-radius: 0px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/public/images/logo.gif" alt="Safetrain360 Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li data-content="dashboardSection" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard
+                    </li>
+                    <li data-content="moduleSection"><i class="fas fa-users"></i> Modules</li>
+                    <li data-content="quizzSection"><i class="fas fa-blog"></i> Quizz & Assesment</li>
+                    <li><i class="fas fa-sign-out-alt"></i> <a href="/logout" class="logout-link">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TRAINEE DASHBOARD SECTION -->
+            <section id="dashboardSection" class="content-section active">
+                <h2>Trainee Dashboard</h2>
+                <p style="color:#94a3b8; margin-bottom:15px;">
+                    Track your training progress and performance
+                </p>
+
+                <!-- STATS CARDS -->
+                <div class="cards-container" style="gap:15px; margin-bottom:20px;">
+                    <div class="card" style="flex:1; text-align:center; padding:15px;">
+                        <h4>Available Modules</h4>
+                        <p class="stat-number" id="total-modules">5</p>
+                    </div>
+
+                    <div class="card" style="flex:1; text-align:center; padding:15px;">
+                        <h4>Completed Modules</h4>
+                        <p class="stat-number" id="completed-modules">2</p>
+                    </div>
+
+                    <div class="card" style="flex:1; text-align:center; padding:15px;">
+                        <h4>Pending Modules</h4>
+                        <p class="stat-number" id="pending-modules">3</p>
+                    </div>
+
+                    <div class="card" style="flex:1; text-align:center; padding:15px;">
+                        <h4>Average Quiz Score</h4>
+                        <p class="stat-number" id="avg-score">78%</p>
+                    </div>
+                </div>
+
+                <!-- CHARTS -->
+                <div class="dashboard-grid" style="gap:20px; margin-bottom:20px;">
+                    <div class="card" style="flex:1; padding:20px;">
+                        <h3>Training Progress</h3>
+                        <canvas id="progressChart" style="width:100%; height:250px;"></canvas>
+                    </div>
+
+                    <div class="card" style="flex:1; padding:20px;">
+                        <h3>Quiz Performance</h3>
+                        <canvas id="scoreChart" style="width:100%; height:250px;"></canvas>
+                    </div>
+                </div>
+
+                <!-- RECENT ACTIVITY -->
+                <div class="card">
+                    <h3>Recent Activity</h3>
+                    <ul class="activity-list" id="activity-list">
+                        <li>✅ Completed <strong>Hazard Perception</strong> module</li>
+                        <li>📝 Scored <strong>80%</strong> in Safety Quiz</li>
+                        <li>📦 Started <strong>Manual Handling</strong> training</li>
+                        <li>⏳ Pending <strong>Advanced Hazard Training</strong></li>
+                    </ul>
+                </div>
+
+                <!-- MODULE STATUS TABLE -->
+                <div class="card" style="margin-top:20px;">
+                    <h3>My Training Modules</h3>
+                    <table class="mini-table">
+                        <thead>
+                            <tr>
+                                <th>Module Name</th>
+                                <th>Status</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="my-modules">
+                            <tr>
+                                <td>Hazard Perception</td>
+                                <td><span style="color:#22c55e;">Completed</span></td>
+                                <td>85%</td>
+                            </tr>
+                            <tr>
+                                <td>Scene Awareness</td>
+                                <td><span style="color:#22c55e;">Completed</span></td>
+                                <td>78%</td>
+                            </tr>
+                            <tr>
+                                <td>Manual Handling</td>
+                                <td><span style="color:#eab308;">In Progress</span></td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Safety Quiz</td>
+                                <td><span style="color:#ef4444;">Not Started</span></td>
+                                <td>—</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <section id="moduleSection" class="content-section ">
+
+                <main class="main-content1">
+                    <section class="training-overview">
+                        <h2>Interactive Workplace Safety Training</h2>
+                        <p>
+                            Select a training module below to begin an immersive learning experience.
+                            Each module is designed to improve hazard awareness, decision-making,
+                            and compliance with workplace health and safety standards.
+                        </p>
+
+                        <div class="overview-points">
+                            <div class="overview-item">
+                                <h4>✔ Scenario-Based Learning</h4>
+                                <p>Practice identifying hazards in realistic workplace environments.</p>
+                            </div>
+
+                            <div class="overview-item">
+                                <h4>✔ Skill Assessment</h4>
+                                <p>Complete quizzes and tasks to validate your understanding.</p>
+                            </div>
+
+                            <div class="overview-item">
+                                <h4>✔ Progress Tracking</h4>
+                                <p>Your completion status and scores are recorded automatically.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="module-grid">
+                        <a href="/api/trainee/hazard" class="module-card hazard-module" onclick="initModule('hazard')">
+                            <div class="module-icon">
+                                <svg viewBox="0 0 100 100" width="100" height="100">
+                                    <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c"
+                                        stroke-width="3" />
+                                    <text x="50" y="70" text-anchor="middle" fill="white" font-size="40"
+                                        font-weight="bold">!</text>
+                                </svg>
+                            </div>
+                            <h2 class="module-title">Hazard Perception</h2>
+                            <p class="module-desc">Identify hazards in a warehouse environment. Find dangerous items and
+                                situations before they cause accidents.</p>
+                            <div class="module-info">
+                                <span class="info-badge">5 Hazards to Find</span>
+                                <span class="info-badge">Interactive Scene</span>
+                            </div>
+                            <div class="module-btn">
+                                <span>Start Module</span>
+                                <span class="arrow">&#8594;</span>
+                            </div>
+                        </a>
+
+                        <!-- Module 1 -->
+                        <a href="/api/trainee/forklift" class="module-card hazard-module"
+                            onclick="initModule('hazard1')">
+                            <div class="module-icon">
+                                <svg viewBox="0 0 100 100" width="100" height="100">
+                                    <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c"
+                                        stroke-width="3" />
+                                    <text x="50" y="70" text-anchor="middle" fill="white" font-size="40"
+                                        font-weight="bold">!</text>
+                                </svg>
+                            </div>
+                            <h2 class="module-title">Warehouse Safety Basics</h2>
+                            <p class="module-desc">Learn to spot common hazards in a warehouse, including spillages and
+                                blocked exits.</p>
+                            <div class="module-info">
+                                <span class="info-badge">5 Hazards to Find</span>
+                                <span class="info-badge">Interactive Scene</span>
+                            </div>
+                            <div class="module-btn">
+                                <span>Start Module</span>
+                                <span class="arrow">&#8594;</span>
+                            </div>
+                        </a>
+
+                        <a href="/api/trainee/handling" class="module-card handling-module" onclick="initModule('handling')">
+                            <div class="module-icon">
+                                <svg viewBox="0 0 100 100" width="100" height="100">
+                                    <circle cx="50" cy="20" r="12" fill="#2563eb" />
+                                    <rect x="40" y="35" width="20" height="30" fill="#2563eb" rx="3" />
+                                    <rect x="25" y="40" width="50" height="8" fill="#2563eb" rx="3" />
+                                    <rect x="35" y="65" width="12" height="25" fill="#2563eb" rx="3" />
+                                    <rect x="53" y="65" width="12" height="25" fill="#2563eb" rx="3" />
+                                    <rect x="60" y="75" width="25" height="15" fill="#f59e0b" rx="2" />
+                                </svg>
+                            </div>
+                            <h2 class="module-title">Manual Handling</h2>
+                            <p class="module-desc">Learn proper lifting techniques. Choose the correct postures to
+                                safely handle
+                                objects in the workplace.</p>
+                            <div class="module-info">
+                                <span class="info-badge">4 Scenarios</span>
+                                <span class="info-badge">Posture Training</span>
+                            </div>
+                            <div class="module-btn">
+                                <span>Start Module</span>
+                                <span class="arrow">&#8594;</span>
+                            </div>
+                        </a>
+
+                        <a href="/api/trainee/quizz" class="module-card quiz-module" onclick="initModule('quiz')">
+                            <div class="module-icon">
+                                <svg viewBox="0 0 100 100" width="100" height="100">
+                                    <rect x="20" y="15" width="60" height="70" fill="#f59e0b" rx="8" />
+                                    <line x1="30" y1="35" x2="70" y2="35" stroke="white" stroke-width="4" />
+                                    <line x1="30" y1="50" x2="70" y2="50" stroke="white" stroke-width="4" />
+                                    <line x1="30" y1="65" x2="50" y2="65" stroke="white" stroke-width="4" />
+                                    <circle cx="60" cy="65" r="3" fill="white" />
+                                </svg>
+                            </div>
+                            <h2 class="module-title">Quiz & Assessment</h2>
+                            <p class="module-desc">Test your knowledge after completing training modules. Assess your
+                                skills
+                                with interactive quizzes and instant feedback.</p>
+                            <div class="module-info">
+                                <span class="info-badge">Timed Quiz</span>
+                                <span class="info-badge">Instant Feedback</span>
+                            </div>
+                            <div class="module-btn">
+                                <span>Start Module</span>
+                                <span class="arrow">&#8594;</span>
+                            </div>
+                        </a>
+
+
+
+
+
+                        <a href="/api/trainee/360scene" class="module-card hazard-module" onclick="initModule('hazard')">
+                            <div class="module-icon">
+                                <svg viewBox="0 0 100 100" width="100" height="100">
+                                    <polygon points="50,10 90,80 10,80" fill="#ef4444" stroke="#b91c1c"
+                                        stroke-width="3" />
+                                    <text x="50" y="70" text-anchor="middle" fill="white" font-size="40"
+                                        font-weight="bold">!</text>
+                                </svg>
+                            </div>
+                            <h2 class="module-title">Hazards in 360 degree envireonment</h2>
+                            <p class="module-desc">Identify hazards in a 360 degree environment. Find dangerous hazards
+                                and
+                                situations before they cause accidents.</p>
+                            <div class="module-info">
+                                <span class="info-badge">5 Hazards to Find</span>
+                                <span class="info-badge"> 360 degree Interactive Scene</span>
+                            </div>
+                            <div class="module-btn">
+                                <span>Start Module</span>
+                                <span class="arrow">&#8594;</span>
+                            </div>
+                        </a>
+
+
+                    </div>
+
+
+                    <section class="how-it-works">
+                        <h3>How the Training Works</h3>
+
+                        <div class="steps">
+                            <div class="step">
+                                <span>1</span>
+                                <p>Select a training module</p>
+                            </div>
+
+                            <div class="step">
+                                <span>2</span>
+                                <p>Complete the interactive training activity</p>
+                            </div>
+
+                            <div class="step">
+                                <span>3</span>
+                                <p>Finish the assessment on the module page</p>
+                            </div>
+
+                            <div class="step">
+                                <span>4</span>
+                                <p>View your score and progress</p>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <div class="progress-section" id="progressSection">
+                        <h3>Your Progress</h3>
+                        <div class="progress-cards">
+                            <div class="progress-card">
+                                <span class="progress-label">Hazard Perception</span>
+                                <div class="progress-status" id="hazardProgress">Not Started</div>
+                            </div>
+                            <div class="progress-card">
+                                <span class="progress-label">Manual Handling</span>
+                                <div class="progress-status" id="handlingProgress">Not Started</div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+            </section>
+
+            <section id="quizzSection" class="content-section ">
+
+                <div class="quiz-container">
+                    <h1>Warehouse Health & Safety Quiz</h1>
+
+                    <div id="quiz"></div>
+                    <button onclick="submitQuiz()">Submit Quiz</button>
+                    <div id="finalResult" class="result"></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Sidebar navigation functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll(".sidebar ul li[data-content]");
+            const sections = document.querySelectorAll(".content-section");
+
+            links.forEach(link => {
+                link.addEventListener("click", () => {
+                    links.forEach(l => l.classList.remove("active"));
+                    link.classList.add("active");
+
+                    sections.forEach(sec => sec.classList.remove("active"));
+                    const target = document.getElementById(link.getAttribute("data-content"));
+                    if (target) target.classList.add("active");
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // ===== CONFIG =====
+        const userId = 1; // change dynamically based on logged-in user
+        const moduleId = "WH_SAFETY"; // change dynamically
+        const apiBase = "/api/quiz"; // your Gin API base path
+
+        let quizData = [];
+
+        // ===== FETCH QUIZ QUESTIONS FROM BACKEND =====
+        fetch(`${apiBase}/${moduleId}`)
+            .then(res => res.json())
+            .then(data => {
+                quizData = data.map(q => ({
+                    id: q.ID,
+                    q: q.Question,
+                    o: [q.OptionA, q.OptionB, q.OptionC, q.OptionD],
+                    a: ["A", "B", "C", "D"].indexOf(q.CorrectOption),
+                    f: q.Feedback
+                }));
+                renderQuiz();
+            });
+
+        // ===== RENDER QUIZ =====
+        function renderQuiz() {
+            const quizEl = document.getElementById("quiz");
+            quizEl.innerHTML = "";
+
+            quizData.forEach((item, index) => {
+                const box = document.createElement("div");
+                box.className = "question-box";
+                box.innerHTML = `
+                <div class="question">${index + 1}. ${item.q}</div>
+                <div class="options">
+                    ${item.o.map((opt, i) => `
+                        <label>
+                            <input type="radio" name="q${index}" value="${i}" onclick="checkAnswer(${index}, ${i}, this)">
+                            ${opt}
+                        </label>`).join("")}
+                </div>
+                <div id="feedback${index}" class="feedback"></div>
+            `;
+                quizEl.appendChild(box);
+            });
+        }
+
+        // ===== CHECK ANSWER =====
+        function checkAnswer(qIndex, selected, element) {
+            const correct = quizData[qIndex].a;
+            const feedback = document.getElementById(`feedback${qIndex}`);
+            const labels = element.parentElement.parentElement.querySelectorAll("label");
+
+            labels.forEach(l => l.classList.remove("correct", "wrong"));
+
+            if (selected === correct) {
+                element.parentElement.classList.add("correct");
+                feedback.className = "feedback correct-text";
+                feedback.innerText = "✔ Correct! " + quizData[qIndex].f;
+            } else {
+                element.parentElement.classList.add("wrong");
+                labels[correct].classList.add("correct");
+                feedback.className = "feedback wrong-text";
+                feedback.innerText = "✖ Wrong. " + quizData[qIndex].f;
+            }
+        }
+
+        // ===== SUBMIT QUIZ TO BACKEND =====
+        function submitQuiz() {
+            let score = 0;
+            let answers = [];
+
+            quizData.forEach((item, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected) {
+                    const correct = parseInt(selected.value) === item.a;
+                    if (correct) score++;
+                    answers.push({
+                        QuestionID: item.id,
+                        Selected: ["A", "B", "C", "D"][selected.value],
+                        IsCorrect: correct
+                    });
+                }
+            });
+
+            fetch(`${apiBase}/submit`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    UserID: userId,
+                    ModuleID: moduleId,
+                    Score: score,
+                    Total: quizData.length,
+                    Answers: answers
+                })
+            })
+                .then(res => res.json())
+                .then(res => {
+                    const percentage = (score / quizData.length) * 100;
+                    const resultEl = document.getElementById("finalResult");
+                    resultEl.innerHTML = `
+                Your Score: ${score}/${quizData.length} <br>
+                Percentage: ${percentage.toFixed(2)}% <br>
+                <span class="${percentage >= 70 ? 'pass' : 'fail'}">
+                    ${percentage >= 70 ? 'PASS 🎉' : 'FAIL ❌'}
+                </span>
+            `;
+                });
+        }
+    </script>
+    <script src="/public/quizzmanagement.js"></script>
+
+</body>
+
+</html>

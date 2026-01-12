@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Warehouse Health & Safety Quiz</title>
+<link rel="stylesheet" href="/public/navbar.css">
 <style>
 body {
     font-family: 'Segoe UI', sans-serif;
@@ -69,6 +70,22 @@ button:hover { background: #2980b9; }
 </style>
 </head>
 <body>
+    <nav>
+        <div class="logo"></div>
+        <img src="/public/images/logo.gif" alt="logo" class="logo-icon" />
+        <ul class="nav-links">
+          <li><a href="/api/trainee/quizz">Quizzes</a></li>
+          <li><a href="/api/trainee/scene">Warehouse safety</a></li>
+          <li><a href="/api/trainee/hazard">Hazards</a></li>
+          <li><a href="/api/trainee/360scene">Hazard Perception</a></li>
+          <li><a href="/api/trainee/forklift">Forklift</a></li>
+          <li><a href="/api/trainee/handling">Manual Handling</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="/logout" class="btn btn-login">Logout</a>
+        </div>
+      </nav>
+
 <div class="quiz-container">
 <h1>Warehouse Health & Safety Quiz</h1>
 
@@ -76,6 +93,74 @@ button:hover { background: #2980b9; }
 <button onclick="submitQuiz()">Submit Quiz</button>
 <div id="finalResult" class="result"></div>
 </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+
+            <div class="footer-container">
+
+
+                <!-- About -->
+                <div class="footer-section" id="first-section">
+                    <img src="/public/images/logo.gif" alt="SafeTrain360 Logo" width="120" />
+
+                </div>
+
+                <!-- Training Modules -->
+                <div class="footer-section">
+                    <h4>Training Modules</h4>
+                    <ul>
+                        <li><a href="#">360° Hazard Perception Training</a></li>
+                        <li><a href="#">Manual Handling Safety</a></li>
+                        <li><a href="#">Forklift & Equipment Safety</a></li>
+                        <li><a href="#">Workplace Risk Awareness</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Health & Safety Guidelines</a></li>
+                        <li><a href="#">Employee Training Support</a></li>
+                        <li><a href="#">Frequently Asked Questions</a></li>
+                        <li><a href="#">Compliance & Standards</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>
+                        SafeTrain360 Pvt. Ltd.<br>
+                        Logistics Training Center<br>
+                        Industrial Area, Kathmandu<br>
+                        Nepal
+                    </p>
+                    <p>
+                        Email: <a href="mailto:support@safetrain360.com">support@safetrain360.com</a><br>
+                        Phone: +977-1-5550000
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p>
+                    © 2026 SafeTrain360. All Rights Reserved.
+                </p>
+                <p>
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Terms of Use</a> |
+                    <a href="#">Accessibility</a>
+                </p>
+                <p class="disclaimer">
+                    This training system is intended for educational purposes only and does not replace
+                    site-specific safety procedures, risk assessments, or professional safety advice.
+                </p>
+            </div>
+        </footer>
 
 <script>
 // ===== CONFIG =====

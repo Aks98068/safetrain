@@ -47,6 +47,8 @@ func main() {
 	routes.RegisterContactRoutes(r, Db.DB)
 	routes.RegisterAdminQuizRoutes(r, Db.DB)
 	routes.RegisterAdminHazardRoutes(r, Db.DB)
+	training := r.Group("/api/training")
+	routes.TrainingHazardRoutes(training, Db.DB)
 
 	// Start server
 	if err := r.Run(":8080"); err != nil {

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazard Perception Training</title>
+    <link rel="stylesheet" href="/public/navbar.css">
+    <style>
+    
+    
+    body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.training-container {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+#warehouseScene {
+    position: relative;
+    width: 900px;
+    height: 500px;
+    margin: 20px auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    border: 3px solid #222;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Single hazard hotspot */
+.hazard-hotspot {
+    position: absolute;
+    border: 3px solid red;
+    background: rgba(255, 0, 0, 0.3);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.hazard-hotspot:hover {
+    background: rgba(255, 0, 0, 0.45);
+}
+
+.hazard-hotspot.found {
+    background: rgba(0, 200, 0, 0.4);
+    border-color: green;
+}
+
+#feedback {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+#nextBtn {
+    margin-top: 15px;
+    padding: 10px 22px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #0a7cff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+#nextBtn:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+    .score-board {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    .feedback-box {
+        background: #fff;
+        border-left: 5px solid #0a7cff;
+        padding: 10px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+    </style>
+   
+</head>
+
+
+<div class="container">
+    <!-- Navbar -->
+    <nav>
+        <div class="logo"></div>
+        <img src="/public/images/logo.gif" alt="logo" class="logo-icon" />
+        <ul class="nav-links">
+          <li><a href="/api/trainee/quizz">Quizzes</a></li>
+          <li><a href="/api/trainee/scene">Warehouse safety</a></li>
+          <li><a href="/api/trainee/hazard">Hazards</a></li>
+          <li><a href="/api/trainee/360scene">Hazard Perception</a></li>
+          <li><a href="/api/trainee/forklift">Forklift</a></li>
+          <li><a href="/api/trainee/handling">Manual Handling</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <a href="/logout" class="btn btn-login">Logout</a>
+        </div>
+      </nav>
+
+<div class="training-container">
+    <h2 id="moduleTitle"></h2>
+    <p id="moduleDescription"></p>
+
+    <div class="score-board">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div id="warehouseScene"></div>
+
+    <div id="feedback" class="feedback-box"></div>
+
+    <button id="nextBtn" onclick="nextHazard()" disabled>
+        Next Hazard →
+    </button>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section" id="first-section">
+            <img src="/public/images/logo.gif" alt="SafeTrain360 Logo" width="120" />
+        </div>
+        <div class="footer-section">
+            <h4>Training Modules</h4>
+            <ul>
+                <li><a href="#">360° Hazard Perception Training</a></li>
+                <li><a href="#">Manual Handling Safety</a></li>
+                <li><a href="#">Forklift & Equipment Safety</a></li>
+                <li><a href="#">Workplace Risk Awareness</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="#">Health & Safety Guidelines</a></li>
+                <li><a href="#">Employee Training Support</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Compliance & Standards</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>
+                SafeTrain360 Pvt. Ltd.<br>
+                Logistics Training Center<br>
+                Industrial Area, Kathmandu<br>
+                Nepal
+            </p>
+            <p>
+                Email: <a href="mailto:support@safetrain360.com">support@safetrain360.com</a><br>
+                Phone: +977-1-5550000
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 SafeTrain360. All Rights Reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Use</a> |
+            <a href="#">Accessibility</a>
+        </p>
+    </div>
+</footer>
+</div>
+
+
+
+<script src="/public/hazardtraining.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        loadTrainingModule(1); // Load the training module
+    });
+</script>
+
+</body>
+</html>

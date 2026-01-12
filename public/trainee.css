@@ -1,0 +1,211 @@
+/* ===============================
+   TRAINEE DASHBOARD STYLES
+================================ */
+
+/* Section */
+.content-section {
+    padding: 25px;
+    animation: fadeIn 0.3s ease-in-out;
+    padding: 20px;
+}
+
+.content-section h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding: 15px;
+}
+
+.content-section p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Cards Container */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+/* Card Base */
+.card {
+    /* background: linear-gradient(135deg, #0ea5e9, #3b82f6); */
+    background: white;
+   
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+;
+    color: black;
+}
+h3{
+    padding: 20px !important;
+}
+
+/* Stat Cards */
+.card h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #cbd5f5;
+    margin-bottom: 8px;
+   
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #22c55e;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Chart Containers */
+canvas {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Activity List */
+.activity-list {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.activity-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #1e293b;
+    font-size: 14px;
+}
+
+.activity-list li:last-child {
+    border-bottom: none;
+}
+
+/* Table */
+.mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.mini-table th,
+.mini-table td {
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.mini-table th {
+    background: white;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.mini-table td {
+    background: white;
+    border-top: 1px solid #1e293b;
+}
+
+/* Status Colors */
+.status-complete {
+    color: #22c55e;
+    font-weight: 600;
+}
+
+.status-progress {
+    color: #eab308;
+    font-weight: 600;
+}
+
+.status-pending {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cards-container,
+    .dashboard-grid {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.quiz-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+.question-box {
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    background: #f9fbfd;
+    border-left: 5px solid #3498db;
+}
+.question {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.options label {
+    display: block;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.options input { margin-right: 10px; }
+.options label:hover { background: #eef6ff; }
+.correct { background: #e8f8f0 !important; border-color: #27ae60 !important; color: #27ae60; font-weight: bold; }
+.wrong { background: #fdecea !important; border-color: #e74c3c !important; color: #e74c3c; font-weight: bold; }
+.feedback { margin-top: 10px; font-size: 15px; font-weight: 600; }
+.feedback.correct-text { color: #27ae60; }
+.feedback.wrong-text { color: #e74c3c; }
+button {
+    display: block;
+    margin: 30px auto;
+    padding: 14px 30px;
+    font-size: 18px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover { background: #2980b9; }
+.result { text-align: center; font-size: 22px; margin-top: 30px; font-weight: bold; }
+.pass { color: #27ae60; }
+.fail { color: #e74c3c; }

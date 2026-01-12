@@ -43,6 +43,18 @@
                 </div>
                 <p><strong>Instructions:</strong> Click on the hazards you can see in the warehouse scene below. Look for spillages, loose boxes, blocked exits, and unsafe items.</p>
             </div>
+            <div class="scene-container">
+                <div class="warehouse-scene" id="warehouseScene">
+                    <svg viewBox="0 0 1000 600" class="warehouse-svg">
+                        <rect x="0" y="0" width="1000" height="600" fill="#e5e7eb"/>
+                        <rect x="0" y="400" width="1000" height="200" fill="#9ca3af"/>
+                        <!-- background buildings / floor -->
+                    </svg>
+            
+                    <!-- Hazards will be dynamically added here -->
+                </div>
+            </div>
+            
 
             <div class="scene-container">
                 <div class="warehouse-scene" id="warehouseScene">
@@ -209,6 +221,7 @@
 
     </div>
     <script src="/public/script.js"></script>
+    <script src="/public/hazardmanagement.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             initHazardModule();

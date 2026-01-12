@@ -34,7 +34,7 @@ func Init() {
 	}
 
 	// migrate
-	if err := database.AutoMigrate(&models.User{}, &models.QuizQuestion{}, &models.QuizAttempt{}, &models.QuizAnswer{}, &models.ContactMessage{}, &models.Module{}); err != nil {
+	if err := database.AutoMigrate(&models.User{}, &models.QuizQuestion{}, &models.QuizAttempt{}, &models.QuizAnswer{}, &models.ContactMessage{}, &models.Module{}, &models.HazardPerceptionModule{}, &models.Hazard{}); err != nil {
 		log.Fatal("❌ AutoMigrate failed:", err)
 	}
 

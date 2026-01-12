@@ -75,3 +75,26 @@ type Module struct {
 func (Module) TableName() string {
 	return "modules" // Assuming one table "modules" with optional content columns
 }
+
+type HazardPerceptionModule struct {
+	ID          uint      `gorm:"primaryKey" json:"id"`
+	Title       string    `gorm:"size:100;not null" json:"title"`
+	Description string    `gorm:"type:text" json:"description"`
+	SceneImage  string    `gorm:"size:255" json:"scene_image,omitempty"`
+	Hazards     []Hazard  `gorm:"foreignKey:ModuleID" json:"hazards,omitempty"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+}
+
+type Hazard struct {
+	ID          uint      `gorm:"primaryKey" json:"id"`
+	ModuleID    uint      `json:"module_id"`
+	Name        string    `gorm:"size:100" json:"name"`
+	Description string    `gorm:"type:text" json:"description"`
+	XPercent    float64   `json:"x_percent"`
+	YPercent    float64   `json:"y_percent"`
+	Width       float64   `json:"width"`
+	Height      float64   `json:"height"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+}

@@ -79,3 +79,62 @@ func RegisterQuizRoutes(router *gin.Engine, db *gorm.DB) {
 		})
 	}
 }
+func RegisterAdminQuizRoutes(router *gin.Engine, db *gorm.DB) {
+	admin := router.Group("/api/admin/quizzes")
+	{
+		// Get all quizzes
+		admin.GET("/", func(c *gin.Context) {
+			var quizzes []models.QuizQuestion
+			if err := db.Find(&quizzes).Error; err != nil {
+				c.JSON(500, gin.H{"error": err.Error()})
+				return
+			}
+			c.JSON(200, quizzes)
+		})
+
+		// Create quiz
+		admin.POST("/", func(c *gin.Context) {
+			var quiz models.QuizQuestion
+			if err := c.ShouldBindJSON(&quiz); err != nil {
+				c.JSON(400, gin.H{"error": err.Error()})
+				return
+			}
+			if err := db.Create(&quiz).Error; err != nil {
+				c.JSON(500, gin.H{"error": err.Error()})
+				return
+			}
+			c.JSON(201, gin.H{"message": "Quiz created successfully", "quiz": quiz})
+		})
+
+		// Update quiz
+		admin.PUT("/:id", func(c *gin.Context) {
+			id := c.Param("id")
+			var quiz models.QuizQuestion
+			if err := db.First(&quiz, id).Error; err != nil {
+				c.JSON(404, gin.H{"error": "Quiz not found"})
+				return
+			}
+			if err := c.ShouldBindJSON(&quiz); err != nil {
+				c.JSON(400, gin.H{"error": err.Error()})
+				return
+			}
+			db.Save(&quiz)
+			c.JSON(200, gin.H{"message": "Quiz updated successfully", "quiz": quiz})
+		})
+
+		// Delete quiz
+		admin.DELETE("/:id", func(c *gin.Context) {
+			id := c.Param("id")
+			var quiz models.QuizQuestion
+			if err := db.First(&quiz, id).Error; err != nil {
+				c.JSON(404, gin.H{"error": "Quiz not found"})
+				return
+			}
+			if err := db.Delete(&quiz).Error; err != nil {
+				c.JSON(500, gin.H{"error": err.Error()})
+				return
+			}
+			c.JSON(200, gin.H{"message": "Quiz deleted successfully"})
+		})
+	}
+}

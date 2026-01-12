@@ -288,24 +288,45 @@
 
 
 
-
-
-            <!-- QUIZ MANAGEMENT -->
             <section id="quizSection" class="content-section">
                 <h2>Quiz Management</h2>
+                <div id="quizAlert" style="display:none;padding:10px;margin-bottom:10px;border-radius:5px;"></div>
+            
                 <div class="card">
                     <h3>Add / Edit Quiz</h3>
                     <form id="quizForm">
                         <input type="hidden" id="quizId">
+                        
+                        <label>Module:</label>
                         <select id="quizModule" required>
                             <option value="">Select Module</option>
                         </select>
-                        <input type="number" id="questionCount" placeholder="Number of Questions" required>
+            
+                        <label>Question:</label>
+                        <textarea id="question" placeholder="Enter question" required></textarea>
+            
+                        <label>Option A:</label>
+                        <input type="text" id="optionA" required>
+            
+                        <label>Option B:</label>
+                        <input type="text" id="optionB" required>
+            
+                        <label>Option C:</label>
+                        <input type="text" id="optionC" required>
+            
+                        <label>Option D:</label>
+                        <input type="text" id="optionD" required>
+            
+                        <label>Correct Option (A/B/C/D):</label>
+                        <input type="text" id="correctOption" maxlength="1" required>
+            
+                        <label>Feedback:</label>
+                        <textarea id="feedback" placeholder="Feedback for this question"></textarea>
+            
                         <button type="submit">Save Quiz</button>
                     </form>
                 </div>
-                <input type="text" id="searchQuiz" class="search" placeholder="Search by module..."
-                    style="margin-bottom: 10px;">
+            
                 <div class="card">
                     <h3>All Quizzes</h3>
                     <table class="data-table">
@@ -313,52 +334,71 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Module</th>
-                                <th>Question Count</th>
+                                <th>Question</th>
+                                <th>Options</th>
+                                <th>Correct Option</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody id="quizTableBody">
                             <tr>
-                                <td colspan="4">Loading quizzes...</td>
+                                <td colspan="6">Loading quizzes...</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
+            
 
-            <!-- HAZARD MANAGEMENT -->
             <section id="hazardSection" class="content-section">
-                <h2>Hazard Management</h2>
+                <h2>Hazard Module Management</h2>
+            
+                <!-- Success/Error Alert -->
+                <div id="hazardAlert" style="display:none; padding:10px; margin-bottom:10px; border-radius:5px;"></div>
+            
+                <!-- Add / Edit Hazard Module -->
                 <div class="card">
-                    <h3>Add / Edit Hazard</h3>
+                    <h3>Add / Edit Hazard Module</h3>
                     <form id="hazardForm">
-                        <input type="hidden" id="hazardId">
-                        <input type="text" id="hazardName" placeholder="Hazard Name" required>
-                        <textarea id="hazardDescription" placeholder="Hazard Description" required></textarea>
-                        <button type="submit">Save Hazard</button>
+                        <input type="hidden" id="hazardModuleId">
+            
+                        <input type="text" id="moduleName" placeholder="Module Name" required>
+                        <textarea id="moduleDesc" placeholder="Module Description" required></textarea>
+                        <input type="text" id="sceneUrl" placeholder="Scene Image URL">
+            
+                        <h4>Hazards</h4>
+                        <div id="hazardsContainer"></div>
+                        <button type="button" onclick="addHazardInput()">Add Hazard</button>
+                        <br><br>
+                        <button type="submit">Save Module</button>
                     </form>
                 </div>
-                <input type="text" id="searchHazard" class="search" placeholder="Search by name..."
-                    style="margin-bottom: 10px;">
+            
+                <!-- Search / Display Modules -->
+                <input type="text" id="searchHazard" class="search" placeholder="Search by module name..." style="margin-bottom:10px;">
+            
                 <div class="card">
-                    <h3>All Hazards</h3>
+                    <h3>All Hazard Modules</h3>
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Module Name</th>
                                 <th>Description</th>
+                                <th>Scene</th>
+                                <th>Hazards</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody id="hazardTableBody">
                             <tr>
-                                <td colspan="4">Loading hazards...</td>
+                                <td colspan="6">Loading modules...</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
+            
 
             <!-- BLOG MANAGEMENT -->
             <section id="blogSection" class="content-section">
@@ -421,5 +461,7 @@
 </body>
 <script src="/public/usermanagement.js"></script>
 <script src="/public/modulemanagement.js"></script>
+<script src="/public/quizzmanagement.js"></script>
+<script src="/public/hazardmanagement.js"></script>
 
 </html>

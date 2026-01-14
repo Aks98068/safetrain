@@ -37,8 +37,6 @@ document.getElementById("login-form").addEventListener("submit", async function 
     // ✅ REDIRECT BASED ON ROLE
     if (data.role === "admin") {
         window.location.href = "/dashboard/admin";
-    } else if (data.role === "supervisor") {
-        window.location.href = "/dashboard/supervisor";
     } else if (data.role === "trainee") {
         window.location.href = "/dashboard/trainee";
     }

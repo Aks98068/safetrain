@@ -55,9 +55,7 @@ func Routes(r *gin.Engine) {
 		dashboard.GET("/admin", RoleMiddleware("admin"), func(c *gin.Context) {
 			c.HTML(http.StatusOK, "dashboard_admin.html", gin.H{"title": "Admin Dashboard"})
 		})
-		dashboard.GET("/supervisor", RoleMiddleware("supervisor"), func(c *gin.Context) {
-			c.HTML(http.StatusOK, "dashboard_supervisor.html", gin.H{"title": "Supervisor Dashboard"})
-		})
+
 		dashboard.GET("/trainee", RoleMiddleware("trainee"), func(c *gin.Context) {
 			c.HTML(http.StatusOK, "dashboard_trainee.html", gin.H{"title": "Trainee Dashboard"})
 		})
@@ -74,11 +72,14 @@ func Routes(r *gin.Engine) {
 			c.HTML(http.StatusOK, "modules.html", gin.H{"title": "Modules"})
 		})
 		trainee.GET("/quizz", func(c *gin.Context) { c.HTML(http.StatusOK, "quizzmodule.html", gin.H{"title": "quizzes"}) })
-		trainee.GET("/hazard", func(c *gin.Context) { c.HTML(http.StatusOK, "hazard.html", gin.H{"title": "hazards"}) })
-		trainee.GET("/360scene", func(c *gin.Context) { c.HTML(http.StatusOK, "360scenemodule.html", gin.H{"title": "360 d scene"}) })
-		trainee.GET("/scene", func(c *gin.Context) { c.HTML(http.StatusOK, "scene.html", gin.H{"title": "warehouse safety "}) })
-		trainee.GET("/forklift", func(c *gin.Context) { c.HTML(http.StatusOK, "hazardmodule.html", gin.H{"title": "forklift"}) })
+		trainee.GET("/hazard", func(c *gin.Context) { c.HTML(http.StatusOK, "hazardmodule.html", gin.H{"title": "hazards"}) })
+		trainee.GET("/360scene", func(c *gin.Context) { c.HTML(http.StatusOK, "scene.html", gin.H{"title": "360 d scene"}) })
+		trainee.GET("/scene", func(c *gin.Context) {
+			c.HTML(http.StatusOK, "360scenemodule.html", gin.H{"title": "warehouse safety "})
+		})
+		trainee.GET("/forklift", func(c *gin.Context) { c.HTML(http.StatusOK, "hazard.html", gin.H{"title": "forklift"}) })
 		trainee.GET("/handling", func(c *gin.Context) { c.HTML(http.StatusOK, "handling.html", gin.H{"title": "manual handling"}) })
+		trainee.GET("/result", func(c *gin.Context) { c.HTML(http.StatusOK, "result.html", gin.H{"title": "result"}) })
 
 	}
 
@@ -232,8 +233,6 @@ func redirectByRole(c *gin.Context, role string) {
 	switch role {
 	case "admin":
 		c.Redirect(http.StatusSeeOther, "/dashboard/admin")
-	case "supervisor":
-		c.Redirect(http.StatusSeeOther, "/dashboard/supervisor")
 	case "trainee":
 		c.Redirect(http.StatusSeeOther, "/dashboard/trainee")
 	default:

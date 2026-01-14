@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(res => res.json())
         .then(data => {
             document.getElementById("total-users").textContent = data.totalUsers;
-            document.getElementById("total-supervisors").textContent = data.supervisors;
             document.getElementById("total-trainees").textContent = data.trainees;
             document.getElementById("pending-approvals").textContent = data.pendingApprovals;
 
@@ -12,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             new Chart(pieCtx, {
                 type: "pie",
                 data: {
-                    labels: ["Supervisors", "Trainees", "Pending Approvals"],
+                    labels: [ "Trainees", "Pending Approvals"],
                     datasets: [{
                         data: [data.supervisors, data.trainees, data.pendingApprovals],
                         backgroundColor: ["#10b981", "#3b82f6", "#ef4444"]

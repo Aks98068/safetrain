@@ -193,7 +193,7 @@ function completeHazardModule() {
     loadState();
     TrainingState.hazardCompleted = true;
     saveState();
-    window.location.href = '/result';
+    window.location.href = '/api/trainee/result';
 }
 
 function initHandlingModule() {
@@ -340,7 +340,7 @@ function completeHandlingModule() {
     loadState();
     TrainingState.handlingCompleted = true;
     saveState();
-    window.location.href = '/result';
+    window.location.href = '/api/trainee/result';
 }
 
 function displayResults() {

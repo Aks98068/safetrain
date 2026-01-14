@@ -13,18 +13,15 @@ import (
 
 func DashboardStats(c *gin.Context) {
 	var totalUsers int64
-	var supervisors int64
 	var trainees int64
 	var pending int64
 
 	Db.DB.Model(&models.User{}).Count(&totalUsers)
-	Db.DB.Model(&models.User{}).Where("role = ?", "supervisor").Count(&supervisors)
 	Db.DB.Model(&models.User{}).Where("role = ?", "trainee").Count(&trainees)
 	Db.DB.Model(&models.User{}).Where("is_active = ?", false).Count(&pending)
 
 	c.JSON(http.StatusOK, gin.H{
 		"totalUsers":       totalUsers,
-		"supervisors":      supervisors,
 		"trainees":         trainees,
 		"pendingApprovals": pending,
 	})
